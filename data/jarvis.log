@@ -1985,3 +1985,59 @@ TypeError: click_on_screen() got an unexpected keyword argument 'verify'
 2026-05-22 22:46:56 | INFO     | agents.screen_agent:211 — [ScreenAgent] type_text success
 2026-05-22 22:46:56 | INFO     | agents.screen_agent:135 — [ScreenAgent] Executing hotkey
 2026-05-22 22:46:57 | INFO     | agents.screen_agent:211 — [ScreenAgent] hotkey success
+2026-05-22 22:58:32 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 22:58:33 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 22:58:33 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 22:58:33 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 22:58:33 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 22:58:33 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 22:58:33 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 22:58:34 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 22:58:34 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 22:58:34 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 22:58:35 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 22:58:35 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 22:59:40 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 22:59:40 | INFO     | agents.screen_agent:256 — [ScreenAgent] Goal: search machine learning roadmap
+2026-05-22 22:59:40 | INFO     | agents.screen_agent:124 — [ScreenAgent] Planning: search machine learning roadmap
+2026-05-22 22:59:40 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing open_app
+2026-05-22 22:59:47 | WARNING  | agents.screen_agent:190 — [ScreenAgent] Verification failed: Chrome
+2026-05-22 22:59:50 | INFO     | agents.screen_agent:200 — [ScreenAgent] Verified: Chrome
+2026-05-22 22:59:51 | INFO     | agents.screen_agent:212 — [ScreenAgent] open_app success
+2026-05-22 22:59:51 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing wait
+2026-05-22 22:59:54 | INFO     | agents.screen_agent:212 — [ScreenAgent] wait success
+2026-05-22 22:59:54 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing click_on_screen
+2026-05-22 22:59:58 | INFO     | agents.screen_agent:200 — [ScreenAgent] Verified: Search
+2026-05-22 22:59:59 | INFO     | agents.screen_agent:212 — [ScreenAgent] click_on_screen success
+2026-05-22 22:59:59 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing type_text
+2026-05-22 23:00:01 | INFO     | agents.screen_agent:212 — [ScreenAgent] type_text success
+2026-05-22 23:00:01 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing hotkey
+2026-05-22 23:00:02 | INFO     | agents.screen_agent:212 — [ScreenAgent] hotkey success
+2026-05-22 23:00:14 | INFO     | core.orchestrator_v2:434 — Processing: 'type hello from jarvis memory'
+2026-05-22 23:00:19 | INFO     | core.orchestrator_v2:434 — Processing: 'hello from jarvis memory'
+2026-05-22 23:00:46 | INFO     | core.orchestrator_v2:434 — Processing: 'scroll down'
