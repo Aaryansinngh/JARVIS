@@ -1,6 +1,6 @@
 """
 core/screen_router.py
-Minimal stable screen routing
+Stable screen routing
 """
 
 from __future__ import annotations
@@ -17,7 +17,29 @@ def extend_rules(base_router):
 
         t = text.lower().strip()
 
-        # OCR screen search
+        # ─────────────────────────────────────
+        # Click routing
+        # ─────────────────────────────────────
+
+        if t.startswith("click "):
+
+            query = (
+                t.replace("click ", "")
+                .strip()
+            )
+
+            return Intent(
+                type=IntentType.TOOL,
+                target="click_on_screen",
+                params={
+                    "query": query
+                },
+                raw=text,
+            )
+
+        # ─────────────────────────────────────
+        # OCR search routing
+        # ─────────────────────────────────────
 
         if t.startswith("find "):
 

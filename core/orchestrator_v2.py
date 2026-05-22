@@ -99,9 +99,10 @@ WORKFLOW_TRIGGERS: dict[str, list[str]] = {
 TOOL_TRIGGERS: dict[str, list[str]] = {
 
     "open_app": [
-        "launch ",
-    ],
-
+      "launch ",
+      "open ",
+      "start ",
+     ],
     "close_app": [
         "close ",
         "quit ",
