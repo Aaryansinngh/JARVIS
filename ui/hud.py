@@ -1,22 +1,17 @@
 import sys
 from pathlib import Path
-
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-
 import customtkinter as ctk
 from queue import Queue
+import threading
+import asyncio
 
 from events.bus import bus, Events
 
 
-class OverlayHUD:
+class JarvisHUD:
 
-    def __init__(
-        self,
-        position="top-right",
-        opacity=0.93,
-        auto_hide_ms=4000,
-    ):
+    def __init__(self):
 
         self.queue = Queue()
 
@@ -32,7 +27,7 @@ class OverlayHUD:
 
         self.root.overrideredirect(True)
 
-        self.root.attributes("-alpha", opacity)
+        self.root.attributes("-alpha", 0.93)
 
         self.root.configure(fg_color="#0f172a")
 
@@ -60,7 +55,7 @@ class OverlayHUD:
 
         self.status = ctk.CTkLabel(
             self.frame,
-            text="🟢 Jarvis Ready",
+            text="Idle",
             font=("Segoe UI", 18),
             wraplength=460,
         )
@@ -68,6 +63,8 @@ class OverlayHUD:
         self.status.pack(pady=(8, 16))
 
         self.root.after(100, self.process_queue)
+
+        self.setup_event_handlers()
 
     # ─────────────────────────────────────────
 
@@ -89,7 +86,7 @@ class OverlayHUD:
 
     # ─────────────────────────────────────────
 
-    def wire_eventbus(self):
+    def setup_event_handlers(self):
 
         @bus.on(Events.COMMAND_RECEIVED)
         async def on_command(event):
@@ -119,24 +116,11 @@ class OverlayHUD:
 
     # ─────────────────────────────────────────
 
-    def listening(self):
+    def run(self):
 
-        self.set_status("🎙️ Listening...")
+        self.root.mainloop()
 
-    # ─────────────────────────────────────────
 
-    def start(self):
+hud = JarvisHUD()
 
-        self.root.after(
-            100,
-            lambda: self.set_status("🟢 Jarvis Ready"),
-        )
-
-    # ─────────────────────────────────────────
-
-    def stop(self):
-
-        try:
-            self.root.destroy()
-        except:
-            pass
+hud.run()
