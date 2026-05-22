@@ -2261,3 +2261,1209 @@ TypeError: click_on_screen() got an unexpected keyword argument 'verify'
 2026-05-22 23:30:18 | INFO     | agents.screen_agent:212 — [ScreenAgent] type_text success
 2026-05-22 23:30:18 | INFO     | agents.screen_agent:136 — [ScreenAgent] Executing hotkey
 2026-05-22 23:30:19 | INFO     | agents.screen_agent:212 — [ScreenAgent] hotkey success
+2026-05-22 23:39:54 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:39:55 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:39:55 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:39:55 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:39:55 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:39:55 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:39:55 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:39:56 | WARNING  | core.orchestrator_v2:320 — Screen tools unavailable: cannot import name 'event_bus' from 'events.bus' (C:\Users\aarya\Downloads\jarvis\jarvis\events\bus.py)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:39:56 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:39:56 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:39:56 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:39:56 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 15 tools, 12 workflows
+2026-05-22 23:40:11 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:43:08 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:43:10 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:43:10 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:43:10 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:43:10 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:43:10 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:43:10 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:43:10 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:43:10 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:43:10 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:43:11 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:43:11 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:43:17 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:43:17 | WARNING  | tools.base:134 — execute_goal failed: No module named 'agents.retry_engine' (attempt 1)
+2026-05-22 23:43:17 | DEBUG    | tools.base:135 — Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\core\orchestrator_v2.py", line 403, in process
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 121, in execute
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\screen_tools.py", line 350, in execute_goal
+    await screen_agent.execute_goal(
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 152, in execute_goal
+    self._ensure_retry_engine()
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 97, in _ensure_retry_engine
+    from agents.retry_engine import RetryEngine, RetryConfig
+ModuleNotFoundError: No module named 'agents.retry_engine'
+
+2026-05-22 23:45:17 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:45:18 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:45:18 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:45:18 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:45:18 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:45:18 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:45:18 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:45:19 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:45:19 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:45:19 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:45:19 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:45:19 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:45:36 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:45:36 | WARNING  | tools.base:134 — execute_goal failed: 'click_icon' object is not callable (attempt 1)
+2026-05-22 23:45:36 | DEBUG    | tools.base:135 — Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\core\orchestrator_v2.py", line 403, in process
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 121, in execute
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\screen_tools.py", line 350, in execute_goal
+    await screen_agent.execute_goal(
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 174, in execute_goal
+    result = await self._execute_step(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 247, in _execute_step
+    return await self._act_open(target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 306, in _act_open
+    result = await self._tools.click_icon(app_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'click_icon' object is not callable
+
+2026-05-22 23:47:45 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:47:46 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:47:46 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:47:46 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:47:46 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:47:46 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:47:46 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:47:47 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:47:47 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:47:47 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:47:47 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:47:47 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:48:00 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:48:00 | WARNING  | tools.base:134 — execute_goal failed: 'ToolMeta' object has no attribute 'get' (attempt 1)
+2026-05-22 23:48:00 | DEBUG    | tools.base:135 — Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\core\orchestrator_v2.py", line 403, in process
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 121, in execute
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\screen_tools.py", line 350, in execute_goal
+    await screen_agent.execute_goal(
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 204, in execute_goal
+    result = await self._execute_step(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 277, in _execute_step
+    return await self._act_open(target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 336, in _act_open
+    result = await self._tools.click_icon(app_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 98, in _caller
+    tool_obj.meta.get("parameters", {})
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'ToolMeta' object has no attribute 'get'
+
+2026-05-22 23:49:16 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:49:18 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:49:18 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:49:18 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:49:18 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:49:18 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:49:18 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:49:19 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:49:19 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:49:19 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:49:19 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:49:19 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:49:26 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:49:57 | WARNING  | tools.base:131 — execute_goal timed out (attempt 1)
+2026-05-22 23:52:34 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:52:35 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:52:35 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:52:35 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:52:35 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:52:35 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:52:35 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:52:36 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:52:36 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:52:36 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:52:36 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:52:36 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:52:48 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:53:32 | INFO     | core.orchestrator_v2:434 — Processing: 'machine learning roadmap'
+2026-05-22 23:54:03 | WARNING  | core.orchestrator_v2:588 — LLM error: 
+2026-05-22 23:57:24 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:57:25 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:57:25 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:57:25 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:57:25 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:57:25 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:57:25 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:57:26 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:57:26 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:57:26 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:57:27 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:57:27 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-22 23:57:40 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-22 23:58:19 | INFO     | core.orchestrator_v2:434 — Processing: 'machine learning roadmap'
+2026-05-22 23:58:50 | WARNING  | core.orchestrator_v2:588 — LLM error: 
+2026-05-22 23:59:55 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-22 23:59:56 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-22 23:59:56 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-22 23:59:56 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-22 23:59:56 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-22 23:59:56 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-22 23:59:56 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-22 23:59:56 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-22 23:59:56 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-22 23:59:56 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-22 23:59:56 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-22 23:59:56 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-23 00:00:14 | INFO     | core.orchestrator_v2:434 — Processing: 'search machine learning roadmap'
+2026-05-23 00:13:35 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:13:36 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:13:36 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:13:36 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:13:36 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:13:36 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:13:36 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:13:37 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:13:37 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:13:37 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:13:37 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:13:37 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-23 00:13:46 | INFO     | core.orchestrator_v2:434 — Processing: 'open chrome'
+2026-05-23 00:13:57 | INFO     | core.orchestrator_v2:434 — Processing: 'search manipal'
+2026-05-23 00:14:00 | WARNING  | tools.base:134 — execute_goal failed: click_icon() got an unexpected keyword argument 'query' (attempt 1)
+2026-05-23 00:14:00 | DEBUG    | tools.base:135 — Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\core\orchestrator_v2.py", line 403, in process
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 121, in execute
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\screen_tools.py", line 350, in execute_goal
+    await screen_agent.execute_goal(
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 194, in execute_goal
+    result = await self._execute_step(step=step, app_name=app_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 239, in _execute_step
+    return await self._act_open(target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 278, in _act_open
+    result = await self._tools.click_icon(app_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 85, in _caller
+    return await tool_obj.run(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+                 ^^^^^^^^^^^^
+TypeError: click_icon() got an unexpected keyword argument 'query'
+
+2026-05-23 00:15:38 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:15:39 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:15:39 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:15:39 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:15:39 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:15:39 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:15:39 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:15:39 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:15:39 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:15:39 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:15:39 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:15:39 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-23 00:15:47 | INFO     | core.orchestrator_v2:434 — Processing: 'search manipal'
+2026-05-23 00:16:03 | WARNING  | tools.base:134 — execute_goal failed: click_icon() got an unexpected keyword argument 'query' (attempt 1)
+2026-05-23 00:16:03 | DEBUG    | tools.base:135 — Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\core\orchestrator_v2.py", line 403, in process
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 121, in execute
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\screen_tools.py", line 350, in execute_goal
+    await screen_agent.execute_goal(
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 194, in execute_goal
+    result = await self._execute_step(step=step, app_name=app_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 239, in _execute_step
+    return await self._act_open(target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 278, in _act_open
+    result = await self._tools.click_icon(app_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\agents\screen_agent.py", line 85, in _caller
+    return await tool_obj.run(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aarya\Downloads\jarvis\jarvis\tools\base.py", line 195, in _run
+    return await fn(**kwargs)
+                 ^^^^^^^^^^^^
+TypeError: click_icon() got an unexpected keyword argument 'query'
+
+2026-05-23 00:17:22 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:17:23 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:17:23 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:17:23 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:17:23 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:17:23 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:17:23 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:17:24 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:17:24 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:17:24 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:17:24 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:17:24 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-23 00:17:30 | INFO     | core.orchestrator_v2:434 — Processing: 'search manipal'
+2026-05-23 00:17:58 | INFO     | core.orchestrator_v2:434 — Processing: 'search manipal on chrome'
+2026-05-23 00:18:26 | INFO     | core.orchestrator_v2:434 — Processing: 'manipal'
+2026-05-23 00:21:28 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:21:29 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:21:29 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:21:29 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:21:29 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:21:29 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:21:29 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:21:29 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:21:29 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:21:29 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:21:29 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:21:29 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 12 workflows
+2026-05-23 00:21:38 | INFO     | core.orchestrator_v2:434 — Processing: 'search manipal on chrome'
+2026-05-23 00:26:37 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:26:38 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:26:38 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:26:38 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:26:38 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:26:38 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:26:38 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:26:39 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:26:39 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:26:39 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:26:39 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:26:39 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:26:50 | INFO     | core.orchestrator_v2:434 — Processing: 'morning routine'
+2026-05-23 00:27:20 | WARNING  | core.orchestrator_v2:588 — LLM error: 
+2026-05-23 00:29:15 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:29:16 | INFO     | core.orchestrator_v2:260 — Browser router wired
+2026-05-23 00:29:16 | INFO     | core.orchestrator_v2:285 — Screen router wired
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:29:16 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:29:16 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:29:16 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:29:16 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:29:17 | INFO     | core.orchestrator_v2:345 — Screen tools loaded
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:29:17 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:29:17 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:29:17 | INFO     | core.orchestrator_v2:413 — LLM: ollama
+2026-05-23 00:29:17 | INFO     | core.orchestrator_v2:369 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:29:31 | INFO     | core.orchestrator_v2:465 — Processing: 'morning routine'
+2026-05-23 00:29:31 | INFO     | workflows.engine:234 — ▶ Workflow 'morning_routine' starting (8 steps)
+2026-05-23 00:29:31 | DEBUG    | workflows.engine:256 —   [1/8] execute_goal({'goal': 'open chrome'})
+2026-05-23 00:29:52 | DEBUG    | workflows.engine:264 —   ✓ Open Chrome
+2026-05-23 00:29:52 | DEBUG    | workflows.engine:256 —   [2/8] wait({'seconds': 2})
+2026-05-23 00:29:54 | DEBUG    | workflows.engine:264 —   ✓ step[1]: wait
+2026-05-23 00:29:54 | DEBUG    | workflows.engine:256 —   [3/8] open_url({'url': 'https://mail.google.com'})
+2026-05-23 00:29:54 | DEBUG    | workflows.engine:264 —   ✓ Open Gmail
+2026-05-23 00:29:54 | DEBUG    | workflows.engine:256 —   [4/8] wait({'seconds': 1})
+2026-05-23 00:29:55 | DEBUG    | workflows.engine:264 —   ✓ step[3]: wait
+2026-05-23 00:29:55 | DEBUG    | workflows.engine:256 —   [5/8] open_url({'url': 'https://calendar.google.com'})
+2026-05-23 00:29:55 | DEBUG    | workflows.engine:264 —   ✓ Open Calendar
+2026-05-23 00:29:55 | DEBUG    | workflows.engine:256 —   [6/8] wait({'seconds': 1})
+2026-05-23 00:29:56 | DEBUG    | workflows.engine:264 —   ✓ step[5]: wait
+2026-05-23 00:29:56 | DEBUG    | workflows.engine:256 —   [7/8] open_url({'url': 'https://news.google.com'})
+2026-05-23 00:29:56 | DEBUG    | workflows.engine:264 —   ✓ Open News
+2026-05-23 00:29:56 | DEBUG    | workflows.engine:256 —   [8/8] speak({'text': 'Good morning. Gmail, Calendar and News are open.'})
+2026-05-23 00:30:03 | DEBUG    | workflows.engine:264 —   ✓ step[7]: speak
+2026-05-23 00:30:03 | INFO     | workflows.engine:288 — ◼ Workflow 'morning_routine': success (8/8 steps ok, 32526ms)
+2026-05-23 00:33:27 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:33:28 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:33:28 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:33:28 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:33:28 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:33:28 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:33:28 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:33:29 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:33:29 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:33:29 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:33:29 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:33:29 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:33:52 | INFO     | core.orchestrator_v2:434 — Processing: 'open chrome'
+2026-05-23 00:34:31 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:34:32 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:34:32 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:34:32 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:34:32 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:34:32 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:34:32 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:34:33 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:34:33 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:34:33 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:34:33 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:34:33 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:34:34 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:34:38 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:34:43 | INFO     | voice.listener:40 — Recording complete.
+2026-05-23 00:34:43 | INFO     | voice.listener:55 — Saved recording to debug.wav
+2026-05-23 00:34:43 | INFO     | voice.transcriber:23 — Loading Whisper model 'base'... (first run downloads it)
+2026-05-23 00:35:27 | INFO     | voice.transcriber:40 — Whisper ready.
+2026-05-23 00:35:27 | INFO     | voice.transcriber:65 — Transcribed: ''
+2026-05-23 00:35:27 | INFO     | voice.speaker:37 — Speaking: 'I didn't catch that. Try again.'
+2026-05-23 00:35:33 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:35:38 | INFO     | voice.listener:40 — Recording complete.
+2026-05-23 00:35:38 | INFO     | voice.listener:55 — Saved recording to debug.wav
+2026-05-23 00:35:38 | INFO     | voice.transcriber:65 — Transcribed: ''
+2026-05-23 00:35:38 | INFO     | voice.speaker:37 — Speaking: 'I didn't catch that. Try again.'
+2026-05-23 00:35:38 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:35:43 | INFO     | voice.listener:40 — Recording complete.
+2026-05-23 00:35:43 | INFO     | voice.listener:55 — Saved recording to debug.wav
+2026-05-23 00:35:43 | INFO     | voice.transcriber:65 — Transcribed: ''
+2026-05-23 00:35:43 | INFO     | voice.speaker:37 — Speaking: 'I didn't catch that. Try again.'
+2026-05-23 00:39:28 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:39:29 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:39:29 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:39:29 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:39:29 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:39:29 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:39:29 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:39:30 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:39:30 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:39:30 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:39:30 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:39:30 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:39:30 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:39:32 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:41:45 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:41:46 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:41:46 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:41:46 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:41:46 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:41:46 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:41:46 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:41:46 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:41:46 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:41:46 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:41:47 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:41:47 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:41:47 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:41:48 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:43:00 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:43:01 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:43:01 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:43:01 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:43:01 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:43:01 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:43:01 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:43:02 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:43:02 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:43:02 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:43:02 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:43:02 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:43:03 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:43:04 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:43:50 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:43:51 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:43:51 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:43:51 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:43:51 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:43:51 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:43:51 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:43:51 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:43:51 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:43:51 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:43:52 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:43:52 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:43:52 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:43:54 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:45:49 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:45:50 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:45:50 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:45:50 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:45:50 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:45:50 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:45:50 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:45:51 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:45:51 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:45:51 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:45:51 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:45:51 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:45:52 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:45:54 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:47:17 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:47:18 | INFO     | core.orchestrator_v2:229 — Browser router wired
+2026-05-23 00:47:18 | INFO     | core.orchestrator_v2:254 — Screen router wired
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:47:18 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:47:18 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:47:18 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:47:18 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:47:19 | INFO     | core.orchestrator_v2:314 — Screen tools loaded
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:47:19 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:47:19 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:47:20 | INFO     | core.orchestrator_v2:382 — LLM: ollama
+2026-05-23 00:47:20 | INFO     | core.orchestrator_v2:338 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:47:20 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:47:21 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:47:27 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:47:27 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:47:27 | INFO     | voice.transcriber:23 — Loading Whisper model 'base'... (first run downloads it)
+2026-05-23 00:47:40 | INFO     | voice.transcriber:40 — Whisper ready.
+2026-05-23 00:47:41 | INFO     | voice.transcriber:65 — Transcribed: 'Open Google Chrome.'
+2026-05-23 00:47:41 | INFO     | core.orchestrator_v2:434 — Processing: 'Open Google Chrome.'
+2026-05-23 00:47:41 | INFO     | voice.speaker:37 — Speaking: 'Sorry, that didn't work: Could not open 'google chrome.': [W...' 
+2026-05-23 00:47:52 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:47:58 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:47:58 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:47:59 | INFO     | voice.transcriber:65 — Transcribed: 'Open Chrome.'
+2026-05-23 00:47:59 | INFO     | core.orchestrator_v2:434 — Processing: 'Open Chrome.'
+2026-05-23 00:47:59 | INFO     | voice.speaker:37 — Speaking: 'Sorry, that didn't work: Could not open 'chrome.': [WinError...' 
+2026-05-23 00:50:51 | INFO     | utils.logger:35 — Logger initialised.
+2026-05-23 00:50:52 | INFO     | core.orchestrator_v2:264 — Browser router wired
+2026-05-23 00:50:52 | INFO     | core.orchestrator_v2:289 — Screen router wired
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: open_app
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: close_app
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: open_url
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: web_search
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: type_text
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: hotkey
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: take_screenshot
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: wait
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: speak
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: copy_to_clipboard
+2026-05-23 00:50:52 | INFO     | tools.builtin:605 — Loaded 10 built-in tools
+2026-05-23 00:50:52 | INFO     | tools.browser_tools:282 — Registered 13 browser tools
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: find_file
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: organize_folder
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: list_recent_files
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: open_file
+2026-05-23 00:50:52 | DEBUG    | tools.base:227 — Registered tool: summarize_file
+2026-05-23 00:50:52 | INFO     | agents.file_agent:460 — Loaded 5 file agent tools
+2026-05-23 00:50:53 | INFO     | core.orchestrator_v2:349 — Screen tools loaded
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: coding_mode (7 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: study_mode (6 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: focus_mode (6 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: entertainment_mode (6 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: internship_hunt (8 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: clean_desktop (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: google_search (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: youtube_search (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: internship_search (6 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: browser_capture (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: morning_routine (8 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: web_search (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: linkedin_jobs (8 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: summarize_screen (2 steps)
+2026-05-23 00:50:53 | DEBUG    | workflows.engine:147 — Registered workflow: close_and_clean (4 steps)
+2026-05-23 00:50:53 | INFO     | workflows.engine:175 — Loaded 0 workflows from config
+2026-05-23 00:50:54 | INFO     | core.orchestrator_v2:417 — LLM: ollama
+2026-05-23 00:50:54 | INFO     | core.orchestrator_v2:373 — Orchestrator ready: 23 tools, 15 workflows
+2026-05-23 00:50:54 | INFO     | voice.wake_word:94 — Keyboard trigger active. Press CTRL+SPACE to activate Jarvis.
+2026-05-23 00:50:56 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:51:02 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:51:02 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:51:02 | INFO     | voice.transcriber:23 — Loading Whisper model 'base'... (first run downloads it)
+2026-05-23 00:51:14 | INFO     | voice.transcriber:40 — Whisper ready.
+2026-05-23 00:51:14 | INFO     | voice.transcriber:65 — Transcribed: ''
+2026-05-23 00:51:14 | INFO     | voice.speaker:37 — Speaking: 'I didn't catch that. Try again.'
+2026-05-23 00:51:18 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:51:24 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:51:24 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:51:25 | INFO     | voice.transcriber:65 — Transcribed: 'Open Google Chrome'
+2026-05-23 00:51:25 | INFO     | core.orchestrator_v2:469 — Processing: 'Open Google Chrome'
+2026-05-23 00:51:41 | INFO     | voice.speaker:37 — Speaking: 'Executed autonomous goal: Open Google Chrome'
+2026-05-23 00:51:54 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:52:00 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:52:00 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:52:02 | INFO     | voice.transcriber:65 — Transcribed: 'Open Google Chrome'
+2026-05-23 00:52:02 | INFO     | core.orchestrator_v2:469 — Processing: 'Open Google Chrome'
+2026-05-23 00:52:18 | INFO     | voice.speaker:37 — Speaking: 'Executed autonomous goal: Open Google Chrome'
+2026-05-23 00:53:04 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:53:10 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:53:10 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:53:11 | INFO     | voice.transcriber:65 — Transcribed: 'Open Chrome'
+2026-05-23 00:53:11 | INFO     | core.orchestrator_v2:469 — Processing: 'Open Chrome'
+2026-05-23 00:53:24 | INFO     | voice.speaker:37 — Speaking: 'Executed autonomous goal: Open Chrome'
+2026-05-23 00:53:51 | INFO     | voice.listener:26 — Recording for 5 seconds...
+2026-05-23 00:53:56 | INFO     | voice.listener:46 — Recording complete.
+2026-05-23 00:53:56 | INFO     | voice.listener:59 — Saved recording to debug.wav
+2026-05-23 00:53:58 | INFO     | voice.transcriber:65 — Transcribed: 'morning routine'
+2026-05-23 00:53:58 | INFO     | core.orchestrator_v2:469 — Processing: 'morning routine'
+2026-05-23 00:53:58 | INFO     | workflows.engine:234 — ▶ Workflow 'morning_routine' starting (8 steps)
+2026-05-23 00:53:58 | DEBUG    | workflows.engine:256 —   [1/8] execute_goal({'goal': 'open chrome'})
+2026-05-23 00:54:18 | DEBUG    | workflows.engine:264 —   ✓ Open Chrome
+2026-05-23 00:54:18 | DEBUG    | workflows.engine:256 —   [2/8] wait({'seconds': 2})
+2026-05-23 00:54:20 | DEBUG    | workflows.engine:264 —   ✓ step[1]: wait
+2026-05-23 00:54:20 | DEBUG    | workflows.engine:256 —   [3/8] open_url({'url': 'https://mail.google.com'})
+2026-05-23 00:54:21 | DEBUG    | workflows.engine:264 —   ✓ Open Gmail
+2026-05-23 00:54:21 | DEBUG    | workflows.engine:256 —   [4/8] wait({'seconds': 1})
+2026-05-23 00:54:22 | DEBUG    | workflows.engine:264 —   ✓ step[3]: wait
+2026-05-23 00:54:22 | DEBUG    | workflows.engine:256 —   [5/8] open_url({'url': 'https://calendar.google.com'})
+2026-05-23 00:54:22 | DEBUG    | workflows.engine:264 —   ✓ Open Calendar
+2026-05-23 00:54:22 | DEBUG    | workflows.engine:256 —   [6/8] wait({'seconds': 1})
+2026-05-23 00:54:23 | DEBUG    | workflows.engine:264 —   ✓ step[5]: wait
+2026-05-23 00:54:23 | DEBUG    | workflows.engine:256 —   [7/8] open_url({'url': 'https://news.google.com'})
+2026-05-23 00:54:23 | DEBUG    | workflows.engine:264 —   ✓ Open News
+2026-05-23 00:54:23 | DEBUG    | workflows.engine:256 —   [8/8] speak({'text': 'Good morning. Gmail, Calendar and News are open.'})
+2026-05-23 00:54:25 | DEBUG    | workflows.engine:264 —   ✓ step[7]: speak
+2026-05-23 00:54:25 | INFO     | workflows.engine:288 — ◼ Workflow 'morning_routine': success (8/8 steps ok, 26964ms)
+2026-05-23 00:54:25 | INFO     | voice.speaker:37 — Speaking: 'Workflow 'morning_routine' completed.'

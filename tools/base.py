@@ -85,7 +85,7 @@ class ToolMeta:
     tags: list[str] = field(default_factory=list)
     requires_confirmation: bool = False
     max_retries: int = 0
-    timeout_seconds: float = 30.0
+    timeout_seconds: float = 120.0
 
 
 # ─── Base Tool class ──────────────────────────────────────────────────────────
@@ -151,7 +151,7 @@ def tool(
     tags: list[str] | None = None,
     requires_confirmation: bool = False,
     max_retries: int = 0,
-    timeout_seconds: float = 30.0,
+    timeout_seconds: float = 120.0,
 ):
     """
     Decorator to turn a plain async function into a registered Tool.

@@ -302,7 +302,7 @@ async def click_icon(
 
         location = pyautogui.locateOnScreen(
             icon_path,
-            confidence=0.8,
+            confidence=0.6,
         )
 
         if location is None:

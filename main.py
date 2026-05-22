@@ -1,3 +1,4 @@
+
 """
 main.py — Jarvis Desktop Assistant — Entry Point
 """
@@ -112,18 +113,22 @@ def run_voice_mode(orchestrator):
 
     from voice.listener import VoiceListener
     from voice.transcriber import Transcriber
+    from voice.speaker import Speaker
     from voice.wake_word import (
         WakeWordDetector,
         KeyboardTrigger,
     )
 
-    listener = VoiceListener()
-
+    listener   = VoiceListener()
     transcriber = Transcriber()
+    speaker    = Speaker()
 
     _activated = threading.Event()
+    _wake_lock = threading.Lock()
 
     def on_wake():
+        if not _wake_lock.acquire(blocking=False):
+            return  # already processing, ignore extra triggers
 
         console.print(
             "\n[bold cyan]🎙️  Listening...[/bold cyan]"
@@ -187,19 +192,29 @@ def run_voice_mode(orchestrator):
                     "[dim]No speech detected.[/dim]"
                 )
 
+                _wake_lock.release()
                 continue
 
             text = transcriber.transcribe(audio)
 
             if not text:
 
-                orchestrator.speaker.speak(
+                speaker.speak(
                     "I didn't catch that. Try again."
                 )
 
+                _wake_lock.release()
                 continue
 
-            orchestrator.process(text)
+            console.print(f"[bold yellow]You said:[/bold yellow] {text}")
+
+            response = orchestrator.process(text)
+
+            if response:
+                console.print(f"[bold cyan]Jarvis:[/bold cyan] {response}")
+                speaker.speak(response)
+
+            _wake_lock.release()
 
     except KeyboardInterrupt:
 

@@ -88,6 +88,37 @@ WORKFLOW_TRIGGERS = {
         "internship",
         "job search",
     ],
+
+    "morning_routine": [
+        "morning routine",
+        "good morning",
+        "start my day",
+    ],
+
+    "linkedin_jobs": [
+        "linkedin jobs",
+        "open jobs",
+        "job boards",
+    ],
+
+    "summarize_screen": [
+        "summarize screen",
+        "read screen",
+        "what's on screen",
+        "what is on screen",
+    ],
+
+    "close_and_clean": [
+        "close and clean",
+        "clean desktop",
+        "clear desktop",
+        "organize downloads",
+    ],
+
+    "entertainment_mode": [
+        "entertainment mode",
+        "fun mode",
+    ],
 }
 
 
@@ -97,9 +128,9 @@ WORKFLOW_TRIGGERS = {
 
 TOOL_TRIGGERS = {
 
-    "open_app": [
-        "launch ",
+    "execute_goal": [
         "open ",
+        "launch ",
         "start ",
     ],
 
@@ -179,6 +210,10 @@ def _build_tool_intent(
 ) -> Intent:
 
     param_map = {
+
+        "execute_goal": {
+            "goal": raw.rstrip(".").strip(),
+        },
 
         "open_app": {
             "app_name": arg,
@@ -598,19 +633,7 @@ class Orchestrator:
 
     @property
     def speaker(self):
-
-        class _Speaker:
-
-            async def speak(
-                self,
-                text: str,
-            ):
-
-                from tools.base import registry
-
-                await registry.execute(
-                    "speak",
-                    {"text": text},
-                )
-
-        return _Speaker()
+        from voice.speaker import Speaker
+        if not hasattr(self, "_speaker"):
+            self._speaker = Speaker()
+        return self._speaker

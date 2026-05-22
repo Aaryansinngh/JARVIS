@@ -36,6 +36,13 @@ def get_builtin_workflows() -> list[Workflow]:
     except ImportError:
         pass
 
+    # Jarvis reliable workflows (subprocess-based app launching)
+    try:
+        from workflows.jarvis_workflows import get_jarvis_workflows
+        base += get_jarvis_workflows()
+    except ImportError:
+        pass
+
     return base
 
 
