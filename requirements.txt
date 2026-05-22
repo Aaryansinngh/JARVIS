@@ -1,0 +1,48 @@
+# ─── Voice Pipeline ───────────────────────────────────────
+sounddevice>=0.4.6          # Microphone capture
+numpy>=1.24.0               # Audio processing
+torch>=2.0.0                # SileroVAD (auto-installs with torchaudio)
+torchaudio>=2.0.0
+silero-vad                  # Voice Activity Detection
+openai-whisper>=20231117    # Local Whisper STT
+pvporcupine>=3.0.0          # Wake-word detection ("Hey Jarvis")
+pyttsx3>=2.90               # Local Text-To-Speech (offline)
+# elevenlabs>=0.2.26        # Premium TTS (optional, needs API key)
+
+# ─── LLM / Brain ──────────────────────────────────────────
+openai>=1.10.0              # GPT-4o API
+langchain>=0.2.0            # Agent orchestration
+langchain-openai>=0.1.0     # OpenAI LangChain integration
+langchain-community>=0.2.0  # Tools, loaders
+pydantic>=2.0.0             # Intent schema validation
+
+# ─── Automation ───────────────────────────────────────────
+playwright>=1.40.0          # Browser automation (run: playwright install)
+pyautogui>=0.9.54           # Desktop GUI automation
+pywinauto>=0.6.8            # Windows UI Automation (Windows only)
+pywhatkit>=5.4              # WhatsApp Web automation
+google-api-python-client>=2.100.0  # Gmail / Google APIs
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=1.0.0
+Pillow>=10.0.0              # Screenshots
+pyperclip>=1.8.2            # Clipboard access
+
+# ─── Memory ───────────────────────────────────────────────
+chromadb>=0.4.0             # Vector database (long-term memory)
+sentence-transformers>=2.2.0  # Local embeddings
+sqlmodel>=0.0.14            # SQLite ORM (episodic memory)
+
+# ─── Safety & Logging ─────────────────────────────────────
+rich>=13.0.0                # Beautiful terminal output + confirmations
+loguru>=0.7.0               # Structured logging
+
+# ─── Configuration ────────────────────────────────────────
+tomli>=2.0.0                # TOML config parsing (Python < 3.11)
+tomli-w>=1.0.0              # Write TOML
+
+# ─── UI / Packaging ───────────────────────────────────────
+customtkinter>=5.2.0        # Modern Tkinter UI (system tray HUD)
+pystray>=0.19.4             # System tray icon
+keyboard>=0.13.5            # Global hotkeys
+psutil>=5.9.0               # System info (running processes)
+requests>=2.31.0            # HTTP for web searches

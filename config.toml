@@ -1,0 +1,148 @@
+# ═══════════════════════════════════════════════════════════
+#  JARVIS — Configuration
+# ═══════════════════════════════════════════════════════════
+
+[assistant]
+name        = "Jarvis"
+wake_word   = "jarvis"
+language    = "en"
+voice_speed = 175
+debug_mode  = false
+
+[ai]
+provider    = "ollama"
+model       = "phi3"
+temperature = 0.2
+max_tokens  = 1000
+openai_api_key = ""
+ollama_url  = "http://localhost:11434"
+
+[voice]
+whisper_model     = "base"
+sample_rate       = 16000
+silence_threshold = 0.5
+energy_threshold  = 300
+
+[memory]
+context_window = 10
+chroma_path    = "./data/chroma"
+sqlite_path    = "./data/jarvis.db"
+
+[safety]
+require_confirmation = [
+    "send_email",
+    "send_whatsapp",
+    "delete_file",
+    "run_script",
+    "shutdown_pc",
+]
+rate_limit = 10
+audit_log  = true
+audit_path = "./data/audit.log"
+
+[apps]
+chrome   = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+vscode   = "C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+notepad  = "notepad.exe"
+explorer = "explorer.exe"
+spotify  = "shell:AppsFolder\\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify"
+terminal = "wt.exe"
+discord  = "C:\\Users\\%USERNAME%\\AppData\\Local\\Discord\\Update.exe"
+vlc      = "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
+excel    = "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE"
+word     = "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+
+[email]
+credentials_path = "./credentials/gmail_credentials.json"
+token_path       = "./credentials/gmail_token.json"
+sender_name      = "Jarvis Assistant"
+
+# ── Phase 4 — Intelligence Layer ────────────────────────────────────────────
+
+[screen]
+# "auto"  → uses GPT-4o Vision if openai_api_key is set, else falls back to OCR
+# "gpt4o" → always use GPT-4o Vision (needs openai_api_key)
+# "ocr"   → always use Tesseract OCR (100% local, needs tesseract binary installed)
+provider         = "auto"
+save_screenshots = false        # save every screenshot to ./data/screenshots/
+
+[overlay]
+enabled      = true             # set false or use --no-hud flag to disable
+position     = "bottom-right"   # top-left | top-right | bottom-left | bottom-right | center
+opacity      = 0.93
+auto_hide_ms = 4000             # ms to show result before hiding (4 seconds)
+
+[notifications]
+enabled = true                  # Windows toast notifications via winotify
+
+# ── Workflows ────────────────────────────────────────────────────────────────
+
+[workflows.coding_mode]
+description = "Start coding environment"
+steps = [
+    "open vscode",
+    "wait 2",
+    "open terminal",
+    "wait 1",
+    "open chrome",
+    "speak All set. Let's build something.",
+]
+
+[workflows.study_mode]
+description = "Set up study session"
+steps = [
+    "open chrome",
+    "wait 1",
+    "url https://notion.so",
+    "wait 1",
+    "url https://youtube.com/results?search_query=lofi+study+music",
+    "speak Study mode ready. Focus up.",
+]
+
+[workflows.morning_routine]
+description = "Morning startup routine"
+steps = [
+    "open chrome",
+    "wait 1",
+    "url https://mail.google.com",
+    "wait 1",
+    "url https://calendar.google.com",
+    "wait 1",
+    "url https://news.google.com",
+    "speak Good morning. Mail, calendar and news are open.",
+]
+
+[workflows.internship_hunt]
+description = "Open internship job boards"
+steps = [
+    "open chrome",
+    "wait 1",
+    "url https://www.linkedin.com/jobs/",
+    "wait 1",
+    "url https://internshala.com",
+    "wait 1",
+    "url https://wellfound.com/jobs",
+    "speak Internship boards are open. Good luck.",
+]
+
+[workflows.focus_mode]
+description = "Distraction-free focus session"
+steps = [
+    "close chrome",
+    "close discord",
+    "close spotify",
+    "wait 1",
+    "open vscode",
+    "speak Focus mode on. Distractions closed.",
+]
+
+[workflows.entertainment_mode]
+description = "Entertainment setup"
+steps = [
+    "open spotify",
+    "wait 1",
+    "open chrome",
+    "wait 1",
+    "url https://youtube.com",
+    "speak Entertainment mode ready.",
+]
