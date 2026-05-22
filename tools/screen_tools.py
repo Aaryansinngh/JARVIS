@@ -10,10 +10,21 @@ import os
 from pathlib import Path
 
 import mss
-import pytesseract
+import easyocr
 import pyautogui
 
 from PIL import Image
+
+# Lazy-initialised so startup isn't slowed down on first import.
+# EasyOCR downloads its model on first use (~50 MB, cached after that).
+_ocr_reader: easyocr.Reader | None = None
+
+
+def _get_reader() -> easyocr.Reader:
+    global _ocr_reader
+    if _ocr_reader is None:
+        _ocr_reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+    return _ocr_reader
 
 from memory.shared_memory import memory
 
@@ -65,6 +76,11 @@ def capture_screen(
 async def _ocr_find(
     query: str,
 ):
+    """
+    Locate `query` text on screen using EasyOCR.
+    Returns a ToolResult whose .output dict has the same keys as before
+    (text, x, y, width, height) so every caller stays unchanged.
+    """
 
     if not query:
 
@@ -74,28 +90,35 @@ async def _ocr_find(
 
     image_path = capture_screen()
 
-    data = pytesseract.image_to_data(
-        Image.open(image_path),
-        output_type=pytesseract.Output.DICT,
+    # EasyOCR returns: list of (bbox, text, confidence)
+    # bbox = [[x1,y1],[x2,y1],[x2,y2],[x1,y2]]
+    results = _get_reader().readtext(
+        image_path,
+        detail=1,
+        paragraph=False,
     )
 
-    words = data["text"]
+    query_lower = query.lower()
 
-    for i, word in enumerate(words):
+    for bbox, text, _conf in results:
 
-        if query.lower() in word.lower():
+        if query_lower in text.lower():
 
-            x = data["left"][i]
-            y = data["top"][i]
-            w = data["width"][i]
-            h = data["height"][i]
+            # Convert bbox corners → x, y, width, height
+            xs = [pt[0] for pt in bbox]
+            ys = [pt[1] for pt in bbox]
+
+            x = int(min(xs))
+            y = int(min(ys))
+            w = int(max(xs) - min(xs))
+            h = int(max(ys) - min(ys))
 
             return ToolResult.ok(
                 {
-                    "text": word,
-                    "x": x,
-                    "y": y,
-                    "width": w,
+                    "text":   text,
+                    "x":      x,
+                    "y":      y,
+                    "width":  w,
                     "height": h,
                 }
             )
@@ -221,11 +244,14 @@ async def describe_screen():
 
     image_path = capture_screen()
 
-    text = pytesseract.image_to_string(
-        Image.open(image_path)
+    # EasyOCR returns (bbox, text, conf) — join all text fragments
+    results = _get_reader().readtext(
+        image_path,
+        detail=1,
+        paragraph=True,   # merge nearby words into lines for readability
     )
 
-    text = text.strip()
+    text = " ".join(frag for _, frag, *_ in results).strip()
 
     if not text:
 
@@ -345,10 +371,12 @@ async def click_icon(
 )
 async def execute_goal(
     goal: str,
+    history: list | None = None,
 ):
 
     await screen_agent.execute_goal(
-        goal
+        goal,
+        history=history or [],
     )
 
     return ToolResult.ok(
@@ -424,5 +452,5 @@ def load_screen_tools():
     registry._tools["scroll_up"] = scroll_up
 
     print(
-        "[screen_tools] OCR tools loaded"
+        "[screen_tools] EasyOCR tools loaded"
     )

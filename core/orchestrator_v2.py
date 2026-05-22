@@ -8,11 +8,24 @@ Stable architecture:
 - Workflows
 - EventBus HUD
 - Ollama integration
+
+CHANGES (drop-in upgrade — no other files need touching):
+  1. Fuzzy tool matching    — triggers fire if keyword found ANYWHERE in sentence,
+                              not just at t.startswith(). Longest trigger wins.
+  2. Dynamic workflow params — spoken query/app extracted and injected into context
+                              so workflows receive {query}, {app} etc. at runtime.
+  3. LLM intent router      — _llm_route() now actually calls phi3 via Ollama and
+                              returns a typed Intent instead of always returning None.
+  4. Session history        — _history is written on every turn (user + assistant)
+                              and passed to both _llm_route and _answer_question.
+  5. Ollama timeout         — raised to 45s so phi3 has time to respond.
 """
 
 from __future__ import annotations
 
 import asyncio
+import json
+import re
 from typing import Any, Optional
 
 from loguru import logger
@@ -28,6 +41,13 @@ from agents.file_agent import (
 
 from workflows.engine import WorkflowEngine
 from workflows.builtin import get_builtin_workflows
+
+
+# ─────────────────────────────────────────────────────────────
+# Config
+# ─────────────────────────────────────────────────────────────
+
+OLLAMA_TIMEOUT = 45   # seconds — was effectively 15 in planner.py
 
 
 # ─────────────────────────────────────────────────────────────
@@ -160,7 +180,56 @@ TOOL_TRIGGERS = {
 
 
 # ─────────────────────────────────────────────────────────────
-# Rule-based Routing
+# Param Extraction Helpers
+# ─────────────────────────────────────────────────────────────
+
+# Filler words stripped from the end of extracted targets
+_TRAILING_FILLERS = (
+    " for me", " please", " now", " thanks",
+    " quickly", " asap", " right now",
+)
+
+# Patterns to pull a search/query value out of natural speech
+_QUERY_PATTERNS = [
+    r"search(?:\s+for)?\s+(.+)",
+    r"look\s+up\s+(.+)",
+    r"find(?:\s+information\s+(?:about|on))?\s+(.+)",
+    r"google\s+(.+)",
+    r"youtube\s+(.+)",
+]
+
+
+def _extract_arg_after(text: str, trigger: str) -> str:
+    """
+    Pull out text that follows `trigger` in `text` (case-insensitive),
+    strip trailing filler words.
+    e.g. "can you open Chrome for me" + "open " → "Chrome"
+    """
+    idx = text.lower().find(trigger.lower())
+    if idx == -1:
+        return text.strip()
+    arg = text[idx + len(trigger):].strip()
+    for filler in _TRAILING_FILLERS:
+        if arg.lower().endswith(filler):
+            arg = arg[: -len(filler)].strip()
+    return arg
+
+
+def _extract_query(text: str) -> Optional[str]:
+    """
+    Pull a search query from natural-language phrasing.
+    Returns None if no pattern matches.
+    """
+    norm = text.lower().strip()
+    for pat in _QUERY_PATTERNS:
+        m = re.search(pat, norm)
+        if m:
+            return m.group(1).strip().rstrip(".")
+    return None
+
+
+# ─────────────────────────────────────────────────────────────
+# Rule-based Routing  (FIXED: fuzzy tool matching)
 # ─────────────────────────────────────────────────────────────
 
 def rule_based_route(
@@ -169,36 +238,50 @@ def rule_based_route(
 
     t = text.lower().strip()
 
-    # Workflows
+    # ── Workflows: trigger appears ANYWHERE in sentence (unchanged behaviour,
+    #    workflows already used `in` not startswith — kept identical)
     for workflow_name, triggers in WORKFLOW_TRIGGERS.items():
 
         for trigger in triggers:
 
             if trigger in t:
 
+                # FIX 2: extract dynamic params and attach to intent
+                params: dict = {}
+                query = _extract_query(text)
+                if query:
+                    params["query"] = query
+
                 return Intent(
                     type=IntentType.WORKFLOW,
                     target=workflow_name,
+                    params=params,
                     raw=text,
                 )
 
-    # Tools
+    # ── Tools: FIX 1 — check trigger ANYWHERE, not just startswith.
+    #    Longest trigger wins (avoids "open " matching inside "organize downloads").
+    best_intent: Optional[Intent] = None
+    best_len = 0
+
     for tool_name, triggers in TOOL_TRIGGERS.items():
 
         for trigger in triggers:
 
-            if t.startswith(trigger):
+            if trigger in t and len(trigger) > best_len:
 
-                arg = t.split(
-                    trigger,
-                    1,
-                )[-1].strip()
+                arg = _extract_arg_after(text, trigger)
 
-                return _build_tool_intent(
+                best_intent = _build_tool_intent(
                     tool_name,
                     arg,
                     text,
                 )
+
+                best_len = len(trigger)
+
+    if best_intent:
+        return best_intent
 
     return None
 
@@ -298,6 +381,133 @@ except Exception as e:
 
 
 # ─────────────────────────────────────────────────────────────
+# LLM Intent Router  (replaces the stub)
+# ─────────────────────────────────────────────────────────────
+
+_INTENT_SYSTEM = """\
+You are an intent router for a desktop AI assistant called JARVIS.
+Given the user's command (and recent conversation history), decide what to do.
+
+Available workflows: {workflows}
+Available tools: {tools}
+
+Reply ONLY with a valid JSON object — no markdown, no explanation.
+Schema:
+{{
+  "type": "workflow" | "tool" | "question",
+  "target": "<workflow_name or tool_name, or empty string for question>",
+  "params": {{}}
+}}
+
+Parameter hints:
+- execute_goal  → {{"goal": "<full original command>"}}
+- web_search    → {{"query": "<search terms>"}}
+- open_url      → {{"url": "<url>"}}
+- close_app     → {{"app_name": "<app>"}}
+- workflow      → include {{"query": "..."}} if a search term was spoken
+
+If the command is a question or casual conversation with no action, use type "question".
+"""
+
+
+async def _llm_intent_route(
+    text: str,
+    history: list[dict],
+    llm,
+) -> Optional[Intent]:
+    """
+    Ask phi3 to classify the command and extract params.
+    Returns a typed Intent or None on failure/timeout.
+    """
+    import httpx
+
+    # Build the prompt — tell phi3 what tools and workflows exist
+    workflows_str = ", ".join(WORKFLOW_TRIGGERS.keys())
+    tools_str = ", ".join(TOOL_TRIGGERS.keys())
+    system = _INTENT_SYSTEM.format(
+        workflows=workflows_str,
+        tools=tools_str,
+    )
+
+    messages = history[-6:] + [{"role": "user", "content": text}]
+
+    # Grab connection details from the already-initialised LLM client
+    base_url = getattr(llm, "base_url", "http://localhost:11434")
+    model = getattr(llm, "model", "phi3")
+
+    payload = {
+        "model":   model,
+        "stream":  False,
+        "system":  system,
+        "messages": messages,
+        "options": {"temperature": 0.0},
+    }
+
+    try:
+
+        async with httpx.AsyncClient(timeout=OLLAMA_TIMEOUT) as client:
+
+            resp = await client.post(
+                f"{base_url}/api/chat",
+                json=payload,
+            )
+
+            resp.raise_for_status()
+            raw_text = (
+                resp.json()
+                .get("message", {})
+                .get("content", "")
+                .strip()
+            )
+
+        # Strip markdown fences phi3 sometimes adds
+        raw_text = re.sub(r"```(?:json)?|```", "", raw_text).strip()
+
+        data = json.loads(raw_text)
+
+        intent_type = data.get("type", "question")
+        target      = data.get("target", "")
+        params      = data.get("params", {})
+
+        logger.debug(
+            f"LLM intent: type={intent_type} "
+            f"target={target} params={params}"
+        )
+
+        if intent_type == IntentType.WORKFLOW:
+            return Intent(
+                type=IntentType.WORKFLOW,
+                target=target,
+                params=params,
+                raw=text,
+            )
+
+        if intent_type == IntentType.TOOL:
+            return Intent(
+                type=IntentType.TOOL,
+                target=target,
+                params=params,
+                raw=text,
+            )
+
+        # "question" or anything else → fall through to _answer_question
+        return Intent(
+            type=IntentType.QUESTION,
+            raw=text,
+        )
+
+    except (
+        Exception  # covers TimeoutException, JSONDecodeError, ConnectError, etc.
+    ) as e:
+
+        logger.warning(
+            f"LLM intent router failed ({type(e).__name__}): {e}"
+        )
+
+        return None
+
+
+# ─────────────────────────────────────────────────────────────
 # Orchestrator
 # ─────────────────────────────────────────────────────────────
 
@@ -321,7 +531,7 @@ class Orchestrator:
         self._file_agent = FileAgent()
 
         self._context: dict[str, Any] = {}
-        self._history: list[dict] = []
+        self._history: list[dict] = []   # FIX 4: written every turn now
 
         self._llm = None
 
@@ -475,29 +685,39 @@ class Orchestrator:
             data={"text": text},
         )
 
+        # FIX 4: record user turn BEFORE routing so LLM has context
+        self._history.append(
+            {"role": "user", "content": text}
+        )
+
         intent = rule_based_route(text)
 
-        if (
-            intent is None
-            and self._llm
-        ):
+        # FIX 3: _llm_route now actually does something
+        if intent is None and self._llm:
 
-            intent = await self._llm_route(
-                text
-            )
+            intent = await self._llm_route(text)
 
         if (
             intent is None
             or intent.type == IntentType.QUESTION
         ):
 
-            return await self._answer_question(
-                text
-            )
+            response = await self._answer_question(text)
 
-        return await self._execute_intent(
-            intent
+        else:
+
+            response = await self._execute_intent(intent)
+
+        # FIX 4: record assistant turn
+        self._history.append(
+            {"role": "assistant", "content": response}
         )
+
+        # Keep history bounded
+        if len(self._history) > 20:
+            self._history = self._history[-20:]
+
+        return response
 
     # ─────────────────────────────────────────
 
@@ -509,7 +729,8 @@ class Orchestrator:
         if intent.type == IntentType.WORKFLOW:
 
             return await self._run_workflow(
-                intent.target
+                intent.target,
+                intent.params,    # FIX 2: pass extracted params
             )
 
         if intent.type == IntentType.TOOL:
@@ -526,6 +747,7 @@ class Orchestrator:
     async def _run_workflow(
         self,
         name: str,
+        params: dict | None = None,   # FIX 2: accept spoken params
     ) -> str:
 
         if name not in self._workflow_engine:
@@ -534,9 +756,13 @@ class Orchestrator:
                 f"Workflow '{name}' not found."
             )
 
+        # FIX 2: merge spoken params into shared context so workflow
+        # steps can reference {query}, {app} etc. as placeholders
+        context = {**self._context, **(params or {})}
+
         result = await self._workflow_engine.run(
             name,
-            context=self._context,
+            context=context,
         )
 
         if result.succeeded:
@@ -592,9 +818,13 @@ class Orchestrator:
     async def _llm_route(
         self,
         text: str,
-    ):
-
-        return None
+    ) -> Optional[Intent]:
+        # FIX 3: was always `return None` — now calls phi3
+        return await _llm_intent_route(
+            text,
+            self._history,
+            self._llm,
+        )
 
     # ─────────────────────────────────────────
 
@@ -607,10 +837,10 @@ class Orchestrator:
 
             try:
 
-                history = self._history[-10:]
-
+                # FIX 4: use self._history (already populated) instead of
+                # a local `history` variable that was never written to
                 return await self._llm.chat(
-                    history + [
+                    self._history[-10:] + [
                         {
                             "role": "user",
                             "content": text,
