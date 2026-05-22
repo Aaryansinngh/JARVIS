@@ -152,6 +152,8 @@ TOOL_TRIGGERS = {
         "open ",
         "launch ",
         "start ",
+        "search ",
+        "youtube ",
     ],
 
     "close_app": [
@@ -162,6 +164,8 @@ TOOL_TRIGGERS = {
     "web_search": [
         "search for ",
         "google ",
+        "look up ",
+        "find information about ",
     ],
 
     "open_url": [
@@ -178,7 +182,6 @@ TOOL_TRIGGERS = {
     ],
 }
 
-
 # ─────────────────────────────────────────────────────────────
 # Param Extraction Helpers
 # ─────────────────────────────────────────────────────────────
@@ -191,27 +194,49 @@ _TRAILING_FILLERS = (
 
 # Patterns to pull a search/query value out of natural speech
 _QUERY_PATTERNS = [
+
     r"search(?:\s+for)?\s+(.+)",
+
     r"look\s+up\s+(.+)",
+
     r"find(?:\s+information\s+(?:about|on))?\s+(.+)",
+
     r"google\s+(.+)",
-    r"youtube\s+(.+)",
+
+    r"youtube(?:\s+for)?\s+(.+)",
+
+    r"search youtube for\s+(.+)",
+
+    r"can you search(?:\s+for)?\s+(.+)",
+
+    r"please search(?:\s+for)?\s+(.+)",
 ]
 
 
 def _extract_arg_after(text: str, trigger: str) -> str:
-    """
-    Pull out text that follows `trigger` in `text` (case-insensitive),
-    strip trailing filler words.
-    e.g. "can you open Chrome for me" + "open " → "Chrome"
-    """
+
     idx = text.lower().find(trigger.lower())
+
     if idx == -1:
         return text.strip()
+
     arg = text[idx + len(trigger):].strip()
-    for filler in _TRAILING_FILLERS:
-        if arg.lower().endswith(filler):
-            arg = arg[: -len(filler)].strip()
+
+    # remove conversational filler
+    fillers = [
+        "for me",
+        "please",
+        "now",
+        "thanks",
+        "jarvis",
+        "can you",
+        "could you",
+    ]
+
+    for filler in fillers:
+
+        arg = arg.replace(filler, "").strip()
+
     return arg
 
 
@@ -295,7 +320,7 @@ def _build_tool_intent(
     param_map = {
 
         "execute_goal": {
-            "goal": raw.rstrip(".").strip(),
+            "goal": f"open {arg.rstrip('.').strip()}",
         },
 
         "open_app": {

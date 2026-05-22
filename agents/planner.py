@@ -289,13 +289,28 @@ class Planner:
                 {"action": "press", "target": "enter"},
             ]
 
-        # =====================================================
-        # OPEN APP
+                # =====================================================
+        # OPEN APP (natural language aware)
         # =====================================================
 
-        if g.startswith("open "):
+        if "open" in g:
 
-            app = goal[5:].strip()
+            match = re.search(
+                r"open\s+(.*?)(?:\s+for me)?$",
+                g
+            )
+
+            app = match.group(1).strip() if match else "chrome"
+
+            # clean common filler words
+            app = (
+                app
+                .replace("please", "")
+                .replace("can you", "")
+                .replace("could you", "")
+                .replace("jarvis", "")
+                .strip()
+            )
 
             return [
                 {"action": "open", "target": app},
@@ -304,7 +319,6 @@ class Planner:
                     "target": self._APP_LAUNCH_WAIT,
                 },
             ]
-
         # =====================================================
         # CLICK
         # =====================================================
