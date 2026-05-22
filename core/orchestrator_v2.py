@@ -3,7 +3,7 @@
 core/orchestrator_v2.py — Jarvis Orchestrator (Stable Version)
 
 - Screen router disabled
-- Screen tools disabled
+- Screen tools enabled
 - Browser routing fixed
 - URL opening fixed
 - Internship workflow compatible
@@ -98,10 +98,6 @@ WORKFLOW_TRIGGERS: dict[str, list[str]] = {
 
 TOOL_TRIGGERS: dict[str, list[str]] = {
 
-    # IMPORTANT:
-    # Removed "open "
-    # so websites route properly
-
     "open_app": [
         "launch ",
     ],
@@ -141,8 +137,6 @@ def rule_based_route(
 
     t = text.lower().strip()
 
-    # Workflows
-
     for workflow_name, triggers in WORKFLOW_TRIGGERS.items():
 
         for trigger in triggers:
@@ -154,8 +148,6 @@ def rule_based_route(
                     target=workflow_name,
                     raw=text,
                 )
-
-    # Tools
 
     for tool_name, triggers in TOOL_TRIGGERS.items():
 
@@ -241,14 +233,35 @@ except ImportError:
         "Browser router unavailable"
     )
 
+# ─────────────────────────────────────────────────────────────
+# Screen Router
+# ─────────────────────────────────────────────────────────────
+
+try:
+
+    from core.screen_router import (
+        extend_rules as _extend_screen,
+    )
+
+    rule_based_route = _extend_screen(
+        rule_based_route
+    )
+
+    logger.debug(
+        "Screen router wired"
+    )
+
+except ImportError:
+
+    logger.warning(
+        "Screen router unavailable"
+    )
+
 
 # ─────────────────────────────────────────────────────────────
 # Screen Router Disabled
 # ─────────────────────────────────────────────────────────────
 
-logger.warning(
-    "Screen router disabled"
-)
 
 
 # ─────────────────────────────────────────────────────────────
@@ -281,7 +294,7 @@ class Orchestrator:
 
         self._boot()
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     def _boot(self):
 
@@ -289,12 +302,14 @@ class Orchestrator:
 
         load_file_agent_tools()
 
-        self._workflow_engine.register_many(
-            get_builtin_workflows()
+        from tools.screen_tools import (
+            load_screen_tools,
         )
 
-        logger.warning(
-            "Screen tools disabled"
+        load_screen_tools()
+
+        self._workflow_engine.register_many(
+            get_builtin_workflows()
         )
 
         if self.config:
@@ -318,7 +333,7 @@ class Orchestrator:
             },
         )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     def _setup_llm(self):
 
@@ -361,7 +376,7 @@ class Orchestrator:
 
             self._llm = None
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     def process(
         self,
@@ -389,7 +404,7 @@ class Orchestrator:
                 self.process_async(text)
             )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def process_async(
         self,
@@ -434,7 +449,7 @@ class Orchestrator:
             intent
         )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def _execute_intent(
         self,
@@ -456,7 +471,7 @@ class Orchestrator:
 
         return "Unknown intent."
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def _run_workflow(
         self,
@@ -484,7 +499,7 @@ class Orchestrator:
             f"Workflow '{name}' failed."
         )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def _run_tool(
         self,
@@ -522,7 +537,7 @@ class Orchestrator:
             f"{result.error}"
         )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def _llm_route(
         self,
@@ -531,7 +546,7 @@ class Orchestrator:
 
         return None
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     async def _answer_question(
         self,
@@ -564,7 +579,7 @@ class Orchestrator:
             "handle that yet."
         )
 
-    # ─────────────────────────────────────────────────────────
+    # ─────────────────────────────────────────
 
     @property
     def speaker(self):
