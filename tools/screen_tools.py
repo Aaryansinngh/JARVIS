@@ -1,12 +1,11 @@
-
 """
 tools/screen_tools.py
-Stable OCR + click tools for Jarvis
+Stable OCR + autonomous screen tools for Jarvis
 """
 
 from __future__ import annotations
-import os
 
+import os
 from pathlib import Path
 
 import mss
@@ -20,7 +19,8 @@ from tools.base import (
     ToolResult,
     registry,
 )
-
+from agents.screen_agent import ScreenAgent
+screen_agent = ScreenAgent()
 
 # ─────────────────────────────────────────
 # Screenshot helper
@@ -165,6 +165,71 @@ async def click_on_screen(
 
 
 # ─────────────────────────────────────────
+# Describe Screen Tool
+# ─────────────────────────────────────────
+
+@tool(
+    name="describe_screen",
+    description="Describe visible text on screen",
+)
+async def describe_screen():
+
+    image_path = capture_screen()
+
+    text = pytesseract.image_to_string(
+        Image.open(image_path)
+    )
+
+    text = text.strip()
+
+    if not text:
+
+        return ToolResult.fail(
+            "No visible text detected"
+        )
+
+    preview = text[:1500]
+
+    return ToolResult.ok(
+        preview
+    )
+
+
+# ─────────────────────────────────────────
+# Scroll Down Tool
+# ─────────────────────────────────────────
+
+@tool(
+    name="scroll_down",
+    description="Scroll down",
+)
+async def scroll_down():
+
+    pyautogui.scroll(-800)
+
+    return ToolResult.ok(
+        "Scrolled down"
+    )
+
+
+# ─────────────────────────────────────────
+# Scroll Up Tool
+# ─────────────────────────────────────────
+
+@tool(
+    name="scroll_up",
+    description="Scroll up",
+)
+async def scroll_up():
+
+    pyautogui.scroll(800)
+
+    return ToolResult.ok(
+        "Scrolled up"
+    )
+
+
+# ─────────────────────────────────────────
 # Icon Click Tool
 # ─────────────────────────────────────────
 
@@ -202,17 +267,17 @@ async def click_icon(
             )
 
         center = pyautogui.center(location)
-         
+
         target_x = center.x
         target_y = center.y + 10
 
         pyautogui.moveTo(
-           target_x,
-           target_y,
-           duration=0.2,
-           )
+            target_x,
+            target_y,
+            duration=0.2,
+        )
 
-        pyautogui.click(clicks=2, interval=0.15)
+        pyautogui.doubleClick()
 
         return ToolResult.ok(
             f'Clicked icon "{icon_name}"'
@@ -224,19 +289,73 @@ async def click_icon(
             f"Icon click failed: {e}"
         )
 
+# ─────────────────────────────────────────
+# Autonomous Goal Executor
+# ─────────────────────────────────────────
+
+@tool(
+    name="execute_goal",
+    description="Execute autonomous screen goal",
+)
+async def execute_goal(
+    goal: str,
+):
+
+    results = await screen_agent.execute_goal(
+        goal
+    )
+
+    return ToolResult.ok(
+        f"Executed autonomous goal: {goal}"
+    )
 
 
+# ─────────────────────────────────────────
+# Verify Text Tool
+# ─────────────────────────────────────────
+
+@tool(
+    name="verify_text_visible",
+    description="Verify text exists on screen",
+)
+async def verify_text_visible(
+    query: str,
+):
+
+    result = await _ocr_find(
+        query
+    )
+
+    if result.succeeded:
+
+        return ToolResult.ok(
+            f'"{query}" visible'
+        )
+
+    return ToolResult.fail(
+        f'"{query}" not visible'
+    )
 # ─────────────────────────────────────────
 # Loader
 # ─────────────────────────────────────────
 
 def load_screen_tools():
 
+    registry._tools["verify_text_visible"] = verify_text_visible
+     
+    registry._tools["execute_goal"] = execute_goal
+
     registry._tools["find_on_screen"] = find_on_screen
 
     registry._tools["click_on_screen"] = click_on_screen
 
     registry._tools["click_icon"] = click_icon
+
+    registry._tools["describe_screen"] = describe_screen
+
+    registry._tools["scroll_down"] = scroll_down
+
+    registry._tools["scroll_up"] = scroll_up
 
     print(
         "[screen_tools] OCR tools loaded"

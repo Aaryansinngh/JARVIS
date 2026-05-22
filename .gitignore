@@ -5,3 +5,7 @@ venv/
 .env
 data/
 logs/
+__pycache__/
+*.pyc
+data/*.log
+data/screenshots/

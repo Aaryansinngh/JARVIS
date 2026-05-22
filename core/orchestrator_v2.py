@@ -1,12 +1,13 @@
-
 """
-core/orchestrator_v2.py — Jarvis Orchestrator (Stable Version)
+core/orchestrator_v2.py — Jarvis Orchestrator
 
-- Screen router disabled
-- Screen tools enabled
-- Browser routing fixed
-- URL opening fixed
-- Internship workflow compatible
+Stable architecture:
+- Browser router
+- Screen router
+- Screen agent tools
+- Workflows
+- EventBus HUD
+- Ollama integration
 """
 
 from __future__ import annotations
@@ -19,16 +20,14 @@ from loguru import logger
 from events.bus import Events, bus
 from tools.base import registry as global_registry
 from tools.builtin import load_all_tools
+
 from agents.file_agent import (
     load_file_agent_tools,
     FileAgent,
 )
-from workflows.engine import (
-    WorkflowEngine,
-)
-from workflows.builtin import (
-    get_builtin_workflows,
-)
+
+from workflows.engine import WorkflowEngine
+from workflows.builtin import get_builtin_workflows
 
 
 # ─────────────────────────────────────────────────────────────
@@ -70,7 +69,7 @@ class Intent:
 # Workflow Triggers
 # ─────────────────────────────────────────────────────────────
 
-WORKFLOW_TRIGGERS: dict[str, list[str]] = {
+WORKFLOW_TRIGGERS = {
 
     "coding_mode": [
         "coding mode",
@@ -96,13 +95,14 @@ WORKFLOW_TRIGGERS: dict[str, list[str]] = {
 # Tool Triggers
 # ─────────────────────────────────────────────────────────────
 
-TOOL_TRIGGERS: dict[str, list[str]] = {
+TOOL_TRIGGERS = {
 
     "open_app": [
-      "launch ",
-      "open ",
-      "start ",
-     ],
+        "launch ",
+        "open ",
+        "start ",
+    ],
+
     "close_app": [
         "close ",
         "quit ",
@@ -138,6 +138,7 @@ def rule_based_route(
 
     t = text.lower().strip()
 
+    # Workflows
     for workflow_name, triggers in WORKFLOW_TRIGGERS.items():
 
         for trigger in triggers:
@@ -150,6 +151,7 @@ def rule_based_route(
                     raw=text,
                 )
 
+    # Tools
     for tool_name, triggers in TOOL_TRIGGERS.items():
 
         for trigger in triggers:
@@ -224,15 +226,16 @@ try:
         rule_based_route
     )
 
-    logger.debug(
+    logger.info(
         "Browser router wired"
     )
 
-except ImportError:
+except Exception as e:
 
     logger.warning(
-        "Browser router unavailable"
+        f"Browser router unavailable: {e}"
     )
+
 
 # ─────────────────────────────────────────────────────────────
 # Screen Router
@@ -248,21 +251,15 @@ try:
         rule_based_route
     )
 
-    logger.debug(
+    logger.info(
         "Screen router wired"
     )
 
-except ImportError:
+except Exception as e:
 
     logger.warning(
-        "Screen router unavailable"
+        f"Screen router unavailable: {e}"
     )
-
-
-# ─────────────────────────────────────────────────────────────
-# Screen Router Disabled
-# ─────────────────────────────────────────────────────────────
-
 
 
 # ─────────────────────────────────────────────────────────────
@@ -299,16 +296,32 @@ class Orchestrator:
 
     def _boot(self):
 
+        # Core tools
         load_all_tools()
 
+        # File agent tools
         load_file_agent_tools()
 
-        from tools.screen_tools import (
-            load_screen_tools,
-        )
+        # Screen tools
+        try:
 
-        load_screen_tools()
+            from tools.screen_tools import (
+                load_screen_tools,
+            )
 
+            load_screen_tools()
+
+            logger.info(
+                "Screen tools loaded"
+            )
+
+        except Exception as e:
+
+            logger.warning(
+                f"Screen tools unavailable: {e}"
+            )
+
+        # Workflows
         self._workflow_engine.register_many(
             get_builtin_workflows()
         )
@@ -319,6 +332,7 @@ class Orchestrator:
                 self.config
             )
 
+        # LLM
         self._setup_llm()
 
         logger.info(
@@ -600,4 +614,3 @@ class Orchestrator:
                 )
 
         return _Speaker()
-
