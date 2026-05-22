@@ -46,7 +46,7 @@ class IntentRouter:
         # YOUTUBE SEARCH
         # =====================================================
 
-        if "youtube" in t:
+        if "youtube" in t and "search" not in t:
 
             query = (
                 t

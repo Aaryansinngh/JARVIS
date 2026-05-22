@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 # ─────────────────────────────────────────
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "phi3"
+OLLAMA_MODEL = "qwen2:0.5b"
 OLLAMA_TIMEOUT = 5
 
 
@@ -35,11 +35,41 @@ OLLAMA_TIMEOUT = 5
 # ─────────────────────────────────────────
 
 _SYSTEM = """
-You are a desktop automation planner.
+You are JARVIS, an autonomous desktop AI agent.
 
-Convert goals into JSON step arrays.
+Your job is to convert a user's goal into a step-by-step execution plan
+for controlling a real computer desktop.
 
-Allowed actions:
+The computer can:
+- open applications
+- click UI elements
+- type text
+- press keyboard shortcuts
+- scroll
+- verify screen content
+- describe the screen visually
+
+IMPORTANT RULES:
+
+1. Prefer FAST deterministic actions over OCR.
+   Example:
+   - use ctrl+l for browser search
+   - use keyboard shortcuts whenever possible
+
+2. Use OCR/visual actions ONLY when necessary.
+
+3. Think step-by-step like a real desktop agent.
+
+4. Plans should be minimal but complete.
+
+5. The user goal may require:
+   - searching
+   - opening apps
+   - navigating websites
+   - summarizing information
+   - interacting with desktop software
+
+AVAILABLE ACTIONS:
 - open
 - wait
 - click
@@ -50,7 +80,47 @@ Allowed actions:
 - verify
 - describe
 
-Return ONLY JSON.
+ACTION FORMAT:
+[
+  {"action":"open","target":"chrome"},
+  {"action":"press","target":"ctrl+l"},
+  {"action":"type","target":"machine learning roadmap"},
+  {"action":"press","target":"enter"}
+]
+
+PLANNING EXAMPLES:
+
+User:
+"search for python tutorials"
+
+Plan:
+[
+  {"action":"open","target":"chrome"},
+  {"action":"wait","target":"1"},
+  {"action":"press","target":"ctrl+l"},
+  {"action":"type","target":"python tutorials"},
+  {"action":"press","target":"enter"}
+]
+
+User:
+"open spotify"
+
+Plan:
+[
+  {"action":"open","target":"spotify"}
+]
+
+User:
+"summarize the current screen"
+
+Plan:
+[
+  {"action":"describe","target":"screen"}
+]
+
+Return ONLY valid JSON.
+No markdown.
+No explanations.
 """.strip()
 
 
@@ -243,6 +313,31 @@ class Planner:
 
         g = goal.lower().strip()
 
+
+
+
+
+        # =====================================================
+        # FAST YOUTUBE SEARCH
+        # =====================================================
+
+        if "youtube" in g and "search" in g:
+
+            query = (
+                goal
+                .replace("youtube", "")
+                .replace("search", "")
+                .strip()
+            )
+
+            return [
+    {
+        "action": "open",
+        "target":
+        f"https://www.youtube.com/results?search_query={query}"
+    }
+]
+
         # =====================================================
         # FAST SEARCH (NO OCR)
         # =====================================================
@@ -253,41 +348,19 @@ class Planner:
                 goal
                 .replace("search for", "")
                 .replace("search", "")
+                .replace("for", "")
+                .replace("on", "")
                 .strip()
             )
 
             return [
-                {"action": "open",  "target": "chrome"},
-                {"action": "wait",  "target": "1.0"},
-                {"action": "press", "target": "ctrl+l"},
-                {"action": "type",  "target": query_text},
-                {"action": "press", "target": "enter"},
-            ]
-
-        # =====================================================
-        # FAST YOUTUBE SEARCH
-        # =====================================================
-
-        if "youtube" in g:
-
-            query = (
-                goal
-                .replace("youtube", "")
-                .replace("search", "")
-                .strip()
-            )
-
-            return [
-                {"action": "open",  "target": "chrome"},
-                {"action": "wait",  "target": "1.0"},
-                {"action": "press", "target": "ctrl+l"},
-                {
-                    "action": "type",
-                    "target":
-                    f"https://www.youtube.com/results?search_query={query}"
-                },
-                {"action": "press", "target": "enter"},
-            ]
+    {
+        "action": "open",
+        "target":
+        f"https://www.google.com/search?q={query_text}"
+    }
+]
+        
 
                 # =====================================================
         # OPEN APP (natural language aware)

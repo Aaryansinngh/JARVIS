@@ -198,6 +198,9 @@ class ScreenAgent:
 
             results.append(result)
 
+             
+            
+
             if not result.succeeded:
 
                 logger.error(
@@ -284,30 +287,52 @@ class ScreenAgent:
     async def _act_open(self, app_name: str) -> ToolResult:
 
         import subprocess
+        import webbrowser
+
+        app_name = app_name.strip()
+
+        # =====================================================
+        # DIRECT URL OPEN
+        # =====================================================
+
+        if (
+            app_name.startswith("http://")
+            or app_name.startswith("https://")
+        ):
+
+            webbrowser.open(app_name)
+
+            return ToolResult.ok(
+                f"Opened URL: {app_name}"
+            )
+
+        # =====================================================
+        # APP LAUNCHERS
+        # =====================================================
 
         launchers = {
-    "chrome": [
-        "start",
-        "chrome",
-        "--profile-directory=Default"
-    ],
+            "chrome": [
+                "start",
+                "chrome",
+                "--profile-directory=Default"
+            ],
 
-    "google chrome": [
-        "start",
-        "chrome",
-        "--profile-directory=Default"
-    ],
+            "google chrome": [
+                "start",
+                "chrome",
+                "--profile-directory=Default"
+            ],
 
-    "notepad": ["notepad"],
+            "notepad": ["notepad"],
 
-    "spotify": ["start", "spotify"],
+            "spotify": ["start", "spotify"],
 
-    "explorer": ["explorer"],
+            "explorer": ["explorer"],
 
-    "edge": ["start", "msedge"],
+            "edge": ["start", "msedge"],
 
-    "microsoft edge": ["start", "msedge"],
-}
+            "microsoft edge": ["start", "msedge"],
+        }
 
         cmd = launchers.get(app_name.lower())
 
@@ -329,10 +354,27 @@ class ScreenAgent:
         pyautogui.write(text, interval=TYPE_INTERVAL)
         return ToolResult.ok(f"Typed: '{text}'")
 
+    
     async def _act_press(self, key: str) -> ToolResult:
-        pyautogui.press(key)
-        return ToolResult.ok(f"Pressed: '{key}'")
 
+        import asyncio
+
+        key = key.lower().strip()
+
+        # Handle key combinations like ctrl+l
+        if "+" in key:
+
+            keys = [k.strip() for k in key.split("+")]
+
+            pyautogui.hotkey(*keys)
+
+        else:
+
+            pyautogui.press(key)
+
+        await asyncio.sleep(0.3)
+
+        return ToolResult.ok(f"Pressed: '{key}'")
     async def _act_click_with_retry(
         self,
         target: str,

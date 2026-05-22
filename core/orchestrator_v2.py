@@ -276,6 +276,7 @@ def rule_based_route(
                 query = _extract_query(text)
                 if query:
                     params["query"] = query
+                    self._session_state["last_search"] = query
 
                 return Intent(
                     type=IntentType.WORKFLOW,
@@ -543,7 +544,7 @@ class Orchestrator:
         config: dict | None = None,
         hud=None,
     ):
-
+        self._session_state = {}
         self.config = config or {}
         self.hud = hud
 
@@ -690,7 +691,7 @@ class Orchestrator:
             )
 
     # ─────────────────────────────────────────
-
+ 
     async def process_async(
         self,
         text: str,
@@ -698,12 +699,83 @@ class Orchestrator:
 
         text = text.strip()
 
+
+        # =====================================================
+        # CONTEXTUAL FOLLOW-UP REFERENCES
+        # =====================================================
+
+        last_search = self._session_state.get("last_search")
+         
+
+        if last_search:
+
+            replacements = {
+                " it ": f" {last_search} ",
+                " that ": f" {last_search} ",
+                " them ": f" {last_search} ",
+            }
+
+            padded = f" {text.lower()} "
+
+            for old, new in replacements.items():
+                padded = padded.replace(old, new)
+
+            text = padded.strip()
+
+        # =====================================================
+        # FAST BROWSER SEARCH ROUTING
+        # =====================================================
+
+        import webbrowser
+
+        lowered = text.lower()
+
+        # YouTube search
+        if (
+            "youtube" in lowered
+            and "search" in lowered
+        ):
+
+            query = (
+                lowered
+                .replace("search", "")
+                .replace("on youtube", "")
+                .replace("youtube", "")
+                .strip()
+            )
+
+            webbrowser.open(
+                f"https://www.youtube.com/results?search_query={query}"
+            )
+
+            return "Opened YouTube search."
+
+        # Google search
+        if lowered.startswith("search "):
+
+            query = (
+                lowered
+                .replace("search for", "")
+                .replace("search", "")
+                .strip()
+            )
+            self._session_state["last_search"] = query
+            webbrowser.open(
+                f"https://www.google.com/search?q={query}"
+            )
+
+            return "Opened Google search."
+
+        
+        
+
         if not text:
             return ""
 
         logger.info(
             f"Processing: '{text}'"
         )
+       
 
         await bus.emit(
             Events.COMMAND_RECEIVED,

@@ -77,9 +77,9 @@ def route_browser(text: str) -> Optional[BrowserIntent]:
         query = _strip(m.group(1))
 
         return BrowserIntent(
-            tool="web_search",
+            tool="youtube_search",
             params={
-                "query": f"{query} youtube"
+                "query": query
             },
         )
 
@@ -93,9 +93,9 @@ def route_browser(text: str) -> Optional[BrowserIntent]:
         query = _strip(m.group(1))
 
         return BrowserIntent(
-            tool="web_search",
+            tool="youtube_search",
             params={
-                "query": f"{query} youtube"
+                "query": query
             },
         )
 
