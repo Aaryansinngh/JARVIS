@@ -20,7 +20,7 @@ class AgentMemory:
         self.ui_locations = {}
 
     # ─────────────────────────────
-    # Remember app
+    # App memory
     # ─────────────────────────────
 
     def remember_app(
@@ -31,7 +31,7 @@ class AgentMemory:
         self.last_app = app
 
     # ─────────────────────────────
-    # Remember query
+    # Query memory
     # ─────────────────────────────
 
     def remember_query(
@@ -42,7 +42,7 @@ class AgentMemory:
         self.last_query = query
 
     # ─────────────────────────────
-    # Remember action
+    # Action memory
     # ─────────────────────────────
 
     def remember_action(
@@ -53,19 +53,21 @@ class AgentMemory:
         self.last_action = action
 
     # ─────────────────────────────
-    # Remember UI locations
+    # UI coordinate memory
     # ─────────────────────────────
 
     def remember_ui(
         self,
         name: str,
-        location,
+        x: int,
+        y: int,
     ):
 
-        self.ui_locations[name] = location
+        self.ui_locations[name] = (
+            x,
+            y,
+        )
 
-    # ─────────────────────────────
-    # Get UI location
     # ─────────────────────────────
 
     def get_ui(
@@ -75,4 +77,15 @@ class AgentMemory:
 
         return self.ui_locations.get(
             name
+        )
+
+    # ─────────────────────────────
+
+    def has_ui(
+        self,
+        name: str,
+    ):
+
+        return (
+            name in self.ui_locations
         )

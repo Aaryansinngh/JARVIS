@@ -1,5 +1,6 @@
 """
 tools/screen_tools.py
+
 Stable OCR + autonomous screen tools for Jarvis
 """
 
@@ -14,13 +15,18 @@ import pyautogui
 
 from PIL import Image
 
+from memory.shared_memory import memory
+
 from tools.base import (
     tool,
     ToolResult,
     registry,
 )
+
 from agents.screen_agent import ScreenAgent
+
 screen_agent = ScreenAgent()
+
 
 # ─────────────────────────────────────────
 # Screenshot helper
@@ -140,6 +146,35 @@ async def click_on_screen(
     query: str,
 ):
 
+    # ─────────────────────
+    # Cached lookup first
+    # ─────────────────────
+
+    cached = memory.get_ui(
+        query
+    )
+
+    if cached:
+
+        x, y = cached
+
+        pyautogui.moveTo(
+            x,
+            y,
+            duration=0.2,
+        )
+
+        pyautogui.doubleClick()
+
+        return ToolResult.ok(
+            f'Clicked cached "{query}" '
+            f'at ({x}, {y})'
+        )
+
+    # ─────────────────────
+    # OCR fallback
+    # ─────────────────────
+
     result = await _ocr_find(query)
 
     if not result.succeeded:
@@ -150,6 +185,16 @@ async def click_on_screen(
 
     x = data["x"] + (data["width"] // 2)
     y = data["y"] + (data["height"] // 2)
+
+    # ─────────────────────
+    # Save coordinates
+    # ─────────────────────
+
+    memory.remember_ui(
+        query,
+        x,
+        y,
+    )
 
     pyautogui.moveTo(
         x,
@@ -289,6 +334,7 @@ async def click_icon(
             f"Icon click failed: {e}"
         )
 
+
 # ─────────────────────────────────────────
 # Autonomous Goal Executor
 # ─────────────────────────────────────────
@@ -301,7 +347,7 @@ async def execute_goal(
     goal: str,
 ):
 
-    results = await screen_agent.execute_goal(
+    await screen_agent.execute_goal(
         goal
     )
 
@@ -322,6 +368,24 @@ async def verify_text_visible(
     query: str,
 ):
 
+    # ─────────────────────
+    # Cached verification
+    # ─────────────────────
+
+    cached = memory.get_ui(
+        query
+    )
+
+    if cached:
+
+        return ToolResult.ok(
+            f'"{query}" cached'
+        )
+
+    # ─────────────────────
+    # OCR fallback
+    # ─────────────────────
+
     result = await _ocr_find(
         query
     )
@@ -335,6 +399,8 @@ async def verify_text_visible(
     return ToolResult.fail(
         f'"{query}" not visible'
     )
+
+
 # ─────────────────────────────────────────
 # Loader
 # ─────────────────────────────────────────
@@ -342,7 +408,7 @@ async def verify_text_visible(
 def load_screen_tools():
 
     registry._tools["verify_text_visible"] = verify_text_visible
-     
+
     registry._tools["execute_goal"] = execute_goal
 
     registry._tools["find_on_screen"] = find_on_screen

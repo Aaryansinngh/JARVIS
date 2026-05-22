@@ -18,7 +18,7 @@ from events.bus import (
 from tools.base import registry
 
 from agents.planner import Planner
-from memory.agent_memory import AgentMemory
+from memory.shared_memory import memory
 
 class ScreenAgent:
 
@@ -27,7 +27,7 @@ class ScreenAgent:
         self.max_retries = 3
 
         self.planner = Planner()
-        self.memory = AgentMemory()
+        
 
     # ─────────────────────────────────────
     # Click text
