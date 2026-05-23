@@ -766,8 +766,114 @@ class Orchestrator:
 
             return "Opened Google search."
 
-        
-        
+        # =====================================================
+        # FAST APP CLOSE ROUTING
+        # =====================================================
+
+        if text.lower().startswith("close "):
+
+            import subprocess
+
+            app = (
+                text.lower()
+                .replace("close", "")
+                .replace("again", "")
+                .strip()
+            )
+
+            if app in ("it", "that", "them"):
+
+                app = self._session_state.get(
+                    "last_app",
+                    ""
+                )
+
+            app_map = {
+
+                "chrome": "chrome.exe",
+
+                "spotify": "spotify.exe",
+
+                "notepad": "notepad.exe",
+
+                "edge": "msedge.exe",
+            }
+
+            process_name = app_map.get(app)
+
+            if process_name:
+
+                subprocess.run(
+                    [
+                        "taskkill",
+                        "/F",
+                        "/IM",
+                        process_name,
+                        "/T",
+                    ]
+                )
+
+                self._session_state["last_app"] = app
+
+                return f"Closed {app}"
+        # =====================================================
+        # FAST APP OPEN ROUTING
+        # =====================================================
+
+        if text.lower().startswith("open "):
+
+            import subprocess
+
+            app = (
+                text.lower()
+                .replace("open", "")
+                .replace("again", "")
+                .strip()
+            )
+
+            if app in ("it", "that", "them"):
+
+                app = self._session_state.get(
+                    "last_app",
+                    ""
+                )
+
+            launchers = {
+
+                "chrome": [
+                    "start",
+                    "chrome",
+                    "--profile-directory=Default",
+                ],
+
+                "spotify": [
+                    "start",
+                    "spotify",
+                ],
+
+                "notepad": [
+                    "notepad",
+                ],
+
+                "edge": [
+                      "start",
+                      "msedge",
+                      "--profile-directory=Default",
+                ],
+            }
+
+            launcher = launchers.get(app)
+
+            if launcher:
+
+                subprocess.Popen(
+                    launcher,
+                    shell=True,
+                )
+
+                self._session_state["last_app"] = app
+
+                return f"Opened {app}"
 
         if not text:
             return ""

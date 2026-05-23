@@ -92,6 +92,8 @@ class ScreenAgent:
         self._tools = None
         self._retry = None
         self._planner = None
+        
+        self._memory = {}
 
     def _ensure_tools(self):
 
@@ -248,7 +250,43 @@ class ScreenAgent:
         target = step.get("target", "")
 
         if action == "open":
+
+            target = target.strip()
+
+            if target.upper() == "LAST_APP":
+
+                target = self._memory.get(
+                    "last_app",
+                    ""
+                )
+
             return await self._act_open(target)
+        
+        if action == "close":
+
+            target = (
+                target
+                .replace("again", "")
+                .strip()
+            )
+
+            if target.lower() in (
+                "it",
+                "that",
+                "them",
+            ):
+
+                target = self._memory.get(
+                    "last_app",
+                    ""
+                )
+
+            print(
+                "[memory-close]",
+                target
+            )
+
+            return await self._act_close(target)
 
         if action == "wait":
             seconds = float(target) if target else APP_LAUNCH_WAIT
@@ -302,6 +340,9 @@ class ScreenAgent:
 
             webbrowser.open(app_name)
 
+            # Save memory
+            self._memory["last_app"] = app_name
+
             return ToolResult.ok(
                 f"Opened URL: {app_name}"
             )
@@ -311,6 +352,7 @@ class ScreenAgent:
         # =====================================================
 
         launchers = {
+
             "chrome": [
                 "start",
                 "chrome",
@@ -334,21 +376,96 @@ class ScreenAgent:
             "microsoft edge": ["start", "msedge"],
         }
 
-        cmd = launchers.get(app_name.lower())
+        launcher = launchers.get(
+            app_name.lower()
+        )
 
-        if cmd:
-            subprocess.Popen(cmd, shell=True)
+        if not launcher:
 
-            await asyncio.sleep(APP_LAUNCH_WAIT)
+            return ToolResult.fail(
+                f"Unknown app: {app_name}"
+            )
 
-            return ToolResult.ok(f"Opened {app_name}")
+        try:
 
-        result = await self._tools.click_icon(app_name)
+            subprocess.Popen(
+                launcher,
+                shell=True,
+            )
 
-        if result.succeeded:
-            await asyncio.sleep(APP_LAUNCH_WAIT)
+            # Save memory
+            self._memory["last_app"] = app_name
 
-        return result
+            return ToolResult.ok(
+                f"Opened: {app_name}"
+            )
+
+        except Exception as exc:
+
+            return ToolResult.fail(
+                f"Failed opening {app_name}: {exc}"
+            )
+
+    async def _act_close(
+        self,
+        app_name: str,
+    ) -> ToolResult:
+        print("[DEBUG] _act_close called")
+        import subprocess
+
+        app_map = {
+
+            "chrome": "chrome.exe",
+
+            "google chrome": "chrome.exe",
+
+            "spotify": "spotify.exe",
+
+            "notepad": "notepad.exe",
+
+            "edge": "msedge.exe",
+
+            "microsoft edge": "msedge.exe",
+
+            "explorer": "explorer.exe",
+        }
+
+        process_name = app_map.get(
+            app_name.lower()
+        )
+
+        if not process_name:
+            print("[DEBUG] process_name =", process_name)
+            return ToolResult.fail(
+                f"Unknown app: {app_name}"
+            )
+
+        try:
+
+            result = subprocess.run(
+                  [
+                   "taskkill",
+                   "/F",
+                   "/IM",
+                   process_name,
+                  "/T",
+                  ],
+                capture_output=True,
+                text=True,
+                  )
+
+            print("[taskkill]", result.stdout)
+            print("[taskkill-error]", result.stderr)
+            self._memory["last_app"] = app_name
+            return ToolResult.ok(
+                f"Closed: {app_name}"
+            )
+
+        except Exception as exc:
+
+            return ToolResult.fail(
+                f"Failed closing {app_name}: {exc}"
+            )   
 
     async def _act_type(self, text: str) -> ToolResult:
         pyautogui.write(text, interval=TYPE_INTERVAL)

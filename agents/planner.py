@@ -373,7 +373,16 @@ class Planner:
                 g
             )
 
-            app = match.group(1).strip() if match else "chrome"
+            app = (
+               match.group(1)
+               .replace("again", "")
+               .strip()
+               if match else "chrome"
+                )
+
+            if app.lower() in ("it", "that", "them"):
+
+                app = "LAST_APP"
 
             # clean common filler words
             app = (
@@ -392,6 +401,33 @@ class Planner:
                     "target": self._APP_LAUNCH_WAIT,
                 },
             ]
+        
+                # =====================================================
+        # CLOSE APP
+        # =====================================================
+
+        if "close" in g:
+
+            import re
+
+            match = re.search(
+                r"close\s+(.*?)(?:\s+for me)?$",
+                g
+            )
+
+            app = (
+                match.group(1).strip()
+                if match else "it"
+            )
+
+            return [
+                {
+                    "action": "close",
+                    "target": app,
+                }
+            ]
+
+
         # =====================================================
         # CLICK
         # =====================================================
