@@ -567,6 +567,8 @@ class Orchestrator:
             "started_at": None,
         }
 
+        self._safe_mode = True
+
 
 
         self.config = config or {}
@@ -584,6 +586,7 @@ class Orchestrator:
         self._history: list[dict] = []   # FIX 4: written every turn now
 
         self._llm = None
+        self._action_log_path = "logs/actions.log"
 
         self._boot()
 
@@ -713,6 +716,36 @@ class Orchestrator:
             return asyncio.run(
                 self.process_async(text)
             )
+        
+    # =====================================================
+    # ACTION LOGGER
+    # =====================================================
+
+    def _log_action(
+        self,
+        action: str,
+        result: str = "",
+    ):
+
+        import time
+
+        timestamp = time.strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+
+        log_line = (
+            f"[{timestamp}] "
+            f"ACTION={action} "
+            f"RESULT={result}\n"
+        )
+
+        with open(
+            self._action_log_path,
+            "a",
+            encoding="utf-8",
+        ) as f:
+
+            f.write(log_line)
 
     # ─────────────────────────────────────────
  
@@ -789,6 +822,27 @@ class Orchestrator:
             )
 
             return "Opened Google search."
+        # =====================================================
+        # SAFE MODE CONTROL
+        # =====================================================
+
+        if lowered in (
+            "enable safe mode",
+            "safe mode on",
+        ):
+
+            self._safe_mode = True
+
+            return "Safe mode enabled."
+
+        if lowered in (
+            "disable safe mode",
+            "safe mode off",
+        ):
+
+            self._safe_mode = False
+
+            return "Safe mode disabled."
 
         # =====================================================
         # FAST APP CLOSE ROUTING
@@ -828,6 +882,12 @@ class Orchestrator:
             
 
             if process_name:
+                if self._safe_mode:
+
+                    return (
+                        f"[SAFE MODE] "
+                        f"Permission required to close {app}"
+                    )
 
                 self._start_goal(
                      f"close {app}"
@@ -846,6 +906,10 @@ class Orchestrator:
                 self._session_state["last_app"] = app
                 self._finish_goal(
                    f"Closed {app}"
+                )
+                self._log_action(
+                    f"close {app}",
+                    "success",
                 )
 
                 return f"Closed {app}"
@@ -912,6 +976,10 @@ class Orchestrator:
 
                 self._finish_goal(
                     f"Opened {app}"
+                )
+                self._log_action(
+                    f"open {app}",
+                    "success",
                 )
 
                 return f"Opened {app}"
