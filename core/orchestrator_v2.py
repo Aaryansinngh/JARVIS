@@ -874,6 +874,77 @@ class Orchestrator:
                 self._session_state["last_app"] = app
 
                 return f"Opened {app}"
+            
+
+
+        # =====================================================
+        # FAST WINDOW CONTROL ROUTING
+        # =====================================================
+
+        if (
+            lowered.startswith("minimize ")
+            or lowered.startswith("maximize ")
+            or lowered.startswith("focus ")
+            or lowered.startswith("switch to ")
+        ):
+
+            import pygetwindow as gw
+
+            action = None
+
+            if lowered.startswith("minimize "):
+                action = "minimize"
+
+            elif lowered.startswith("maximize "):
+                action = "maximize"
+
+            else:
+                action = "focus"
+
+            app = (
+                lowered
+                .replace("minimize", "")
+                .replace("maximize", "")
+                .replace("focus", "")
+                .replace("switch to", "")
+                .replace("again", "")
+                .strip()
+            )
+
+            if app in ("it", "that", "them"):
+
+                app = self._session_state.get(
+                    "last_app",
+                    ""
+                )
+
+            windows = gw.getWindowsWithTitle(app)
+
+            if not windows:
+
+                return f"No window found for {app}"
+
+            win = windows[0]
+
+            try:
+
+                if action == "minimize":
+
+                    win.minimize()
+
+                elif action == "maximize":
+
+                    win.maximize()
+
+                else:
+
+                    win.activate()
+
+                return f"{action.title()}d {app}"
+
+            except Exception as exc:
+
+                return f"Window control failed: {exc}"  
 
         if not text:
             return ""

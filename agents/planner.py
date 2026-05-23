@@ -360,9 +360,56 @@ class Planner:
         f"https://www.google.com/search?q={query_text}"
     }
 ]
-        
+        # =====================================================
+        # WINDOW CONTROL
+        # =====================================================
 
-                # =====================================================
+        if (
+            "minimize" in g
+            or "maximize" in g
+            or "focus" in g
+            or "switch to" in g
+        ):
+
+            import re
+
+            action = None
+
+            if "minimize" in g:
+                action = "minimize"
+
+            elif "maximize" in g:
+                action = "maximize"
+
+            else:
+                action = "focus"
+
+            match = re.search(
+                r"(?:minimize|maximize|focus|switch to)\s+(.*)",
+                g,
+            )
+
+            app = (
+                match.group(1).strip()
+                if match else "it"
+            )
+
+            if app.lower() in (
+                "it",
+                "that",
+                "them",
+            ):
+
+                app = "LAST_APP"
+
+            return [
+                {
+                    "action": action,
+                    "target": app,
+                }
+            ]
+
+        # =====================================================
         # OPEN APP (natural language aware)
         # =====================================================
 

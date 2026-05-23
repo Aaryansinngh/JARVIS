@@ -12,7 +12,7 @@ Updated version:
 """
 
 from __future__ import annotations
-
+import pygetwindow as gw
 import asyncio
 import inspect
 import logging
@@ -92,8 +92,108 @@ class ScreenAgent:
         self._tools = None
         self._retry = None
         self._planner = None
-        
+        self._active_window = None
         self._memory = {}
+    
+
+    def _remember_window(
+        self,
+        title: str,
+    ):
+      self._active_window = title
+
+
+    async def _act_focus(
+        self,
+        app_name: str,
+    ) -> ToolResult:
+
+        windows = gw.getWindowsWithTitle(app_name)
+
+        if not windows:
+
+            return ToolResult.fail(
+                f"No window found for: {app_name}"
+            )
+
+        try:
+
+            win = windows[0]
+
+            win.activate()
+
+            self._remember_window(app_name)
+
+            return ToolResult.ok(
+                f"Focused: {app_name}"
+            )
+
+        except Exception as exc:
+
+            return ToolResult.fail(
+                f"Failed focusing {app_name}: {exc}"
+            )
+        
+    async def _act_minimize(
+        self,
+        app_name: str,
+    ) -> ToolResult:
+
+        windows = gw.getWindowsWithTitle(app_name)
+
+        if not windows:
+
+            return ToolResult.fail(
+                f"No window found for: {app_name}"
+            )
+
+        try:
+
+            win = windows[0]
+
+            win.minimize()
+
+            return ToolResult.ok(
+                f"Minimized: {app_name}"
+            )
+
+        except Exception as exc:
+
+            return ToolResult.fail(
+                f"Failed minimizing {app_name}: {exc}"
+            )
+    async def _act_maximize(
+        self,
+        app_name: str,
+    ) -> ToolResult:
+
+        windows = gw.getWindowsWithTitle(app_name)
+
+        if not windows:
+
+            return ToolResult.fail(
+                f"No window found for: {app_name}"
+            )
+
+        try:
+
+            win = windows[0]
+
+            win.maximize()
+
+            self._remember_window(app_name)
+
+            return ToolResult.ok(
+                f"Maximized: {app_name}"
+            )
+
+        except Exception as exc:
+
+            return ToolResult.fail(
+                f"Failed maximizing {app_name}: {exc}"
+            )
+        
+
 
     def _ensure_tools(self):
 
@@ -287,6 +387,16 @@ class ScreenAgent:
             )
 
             return await self._act_close(target)
+        
+        
+        if action == "focus":
+            return await self._act_focus(target)
+
+        if action == "minimize":
+            return await self._act_minimize(target)
+
+        if action == "maximize":
+            return await self._act_maximize(target)
 
         if action == "wait":
             seconds = float(target) if target else APP_LAUNCH_WAIT
