@@ -22,7 +22,7 @@ CHANGES (drop-in upgrade — no other files need touching):
 """
 
 from __future__ import annotations
-
+import time
 import asyncio
 import json
 import re
@@ -545,6 +545,29 @@ class Orchestrator:
         hud=None,
     ):
         self._session_state = {}
+
+
+        # =====================================================
+        # AUTONOMOUS GOAL STATE
+        # =====================================================
+
+        self._goal_state = {
+
+            "goal": None,
+
+            "plan": [],
+
+            "step_index": 0,
+
+            "status": "idle",
+
+            "last_result": None,
+
+            "started_at": None,
+        }
+
+
+
         self.config = config or {}
         self.hud = hud
 
@@ -801,7 +824,13 @@ class Orchestrator:
 
             process_name = app_map.get(app)
 
+            
+
             if process_name:
+
+                self._start_goal(
+                     f"close {app}"
+                           )                        
 
                 subprocess.run(
                     [
@@ -814,6 +843,9 @@ class Orchestrator:
                 )
 
                 self._session_state["last_app"] = app
+                self._finish_goal(
+                   f"Closed {app}"
+                )
 
                 return f"Closed {app}"
         # =====================================================
@@ -866,6 +898,10 @@ class Orchestrator:
 
             if launcher:
 
+                self._start_goal(
+                    f"open {app}"
+                )
+
                 subprocess.Popen(
                     launcher,
                     shell=True,
@@ -873,9 +909,11 @@ class Orchestrator:
 
                 self._session_state["last_app"] = app
 
-                return f"Opened {app}"
-            
+                self._finish_goal(
+                    f"Opened {app}"
+                )
 
+                return f"Opened {app}"
 
         # =====================================================
         # FAST WINDOW CONTROL ROUTING
@@ -945,6 +983,60 @@ class Orchestrator:
             except Exception as exc:
 
                 return f"Window control failed: {exc}"  
+            
+        # =====================================================
+        # GOAL STATUS QUERY
+        # =====================================================
+
+        if lowered in (
+            "status",
+            "current task",
+            "what are you doing",
+        ):
+
+            state = self._goal_state
+
+            return (
+                f"Goal: {state['goal']} | "
+                f"Status: {state['status']} | "
+                f"Step: {state['step_index']}"
+            )
+        # =====================================================
+        # DEMO AUTONOMOUS PLAN
+        # =====================================================
+
+        if "find ai internships" in lowered:
+
+            plan = [
+
+                {
+                    "action": "search",
+                    "query": "AI internships",
+                },
+
+                {
+                    "action": "search",
+                    "query": "machine learning internships",
+                },
+            ]
+
+            self._start_goal(
+                "Find AI internships",
+                plan,
+            )
+
+            return await self._execute_goal_plan()
+        
+        # =====================================================
+        # CONTINUE ACTIVE PLAN
+        # =====================================================
+
+        if lowered in (
+            "continue",
+            "next step",
+        ):
+
+            return await self._execute_goal_plan()
 
         if not text:
             return ""
@@ -992,6 +1084,132 @@ class Orchestrator:
             self._history = self._history[-20:]
 
         return response
+    
+    # =====================================================
+    # GOAL STATE HELPERS
+    # =====================================================
+
+    def _start_goal(
+        self,
+        goal: str,
+        plan: list | None = None,
+    ):
+
+        self._goal_state.update({
+
+            "goal": goal,
+
+            "plan": plan or [],
+
+            "step_index": 0,
+
+            "status": "running",
+
+            "last_result": None,
+
+            "started_at": time.time(),
+        })
+
+    def _finish_goal(
+        self,
+        result: str,
+    ):
+
+        self._goal_state["status"] = "completed"
+
+        self._goal_state["last_result"] = result
+
+    def _fail_goal(
+        self,
+        error: str,
+    ):
+
+        self._goal_state["status"] = "failed"
+
+        self._goal_state["last_result"] = error
+
+    def _advance_goal_step(self):
+    
+
+        self._goal_state["step_index"] += 1
+
+
+    # =====================================================
+    # EXECUTE STORED PLAN
+    # =====================================================
+
+    async def _execute_goal_plan(self):
+
+        state = self._goal_state
+
+        plan = state["plan"]
+
+        step_index = state["step_index"]
+
+        if step_index >= len(plan):
+
+            self._finish_goal(
+                "Plan completed"
+            )
+
+            return "Plan completed"
+
+        step = plan[step_index]
+
+        action = step.get("action")
+
+        print(
+            f"[plan] executing step {step_index}:",
+            step
+        )
+
+        try:
+
+            # =================================================
+            # SEARCH STEP
+            # =================================================
+
+            if action == "search":
+
+                query = step.get("query", "")
+
+                import webbrowser
+
+                webbrowser.open(
+                    f"https://www.google.com/search?q={query}"
+                )
+
+                result = f"Searched for {query}"
+
+            # =================================================
+            # OPEN URL STEP
+            # =================================================
+
+            elif action == "open_url":
+
+                url = step.get("url", "")
+
+                import webbrowser
+
+                webbrowser.open(url)
+
+                result = f"Opened {url}"
+
+            else:
+
+                result = f"Unknown step: {action}"
+
+            self._goal_state["last_result"] = result
+
+            self._advance_goal_step()
+
+            return result
+
+        except Exception as exc:
+
+            self._fail_goal(str(exc))
+
+            return f"Plan failed: {exc}"
 
     # ─────────────────────────────────────────
 
