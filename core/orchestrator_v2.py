@@ -568,6 +568,7 @@ class Orchestrator:
         }
 
         self._safe_mode = True
+        self._pending_action = None
 
 
 
@@ -843,6 +844,45 @@ class Orchestrator:
             self._safe_mode = False
 
             return "Safe mode disabled."
+        
+
+                # =====================================================
+        # APPROVE PENDING ACTION
+        # =====================================================
+
+        if lowered == "approve":
+
+            pending = self._pending_action
+
+            if not pending:
+
+                return "No pending action."
+
+            self._pending_action = None
+
+            if pending["type"] == "close":
+
+                app = pending["app"]
+
+                self._safe_mode = False
+
+                result = await self.process_async(
+                    f"close {app}"
+                )
+
+                self._safe_mode = True
+
+                return result
+
+        # =====================================================
+        # DENY PENDING ACTION
+        # =====================================================
+
+        if lowered == "deny":
+
+            self._pending_action = None
+
+            return "Pending action denied."
 
         # =====================================================
         # FAST APP CLOSE ROUTING
@@ -884,9 +924,17 @@ class Orchestrator:
             if process_name:
                 if self._safe_mode:
 
+                    self._pending_action = {
+
+                        "type": "close",
+
+                        "app": app,
+                    }
+
                     return (
-                        f"[SAFE MODE] "
-                        f"Permission required to close {app}"
+                        f"Jarvis wants to close "
+                        f"{app}. "
+                        f"Type approve or deny."
                     )
 
                 self._start_goal(
