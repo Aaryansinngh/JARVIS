@@ -608,7 +608,13 @@ class Orchestrator:
                 load_screen_tools,
             )
 
+            from vision.screen_observer import (
+                ScreenObserver
+            )
+
             load_screen_tools()
+
+            self._observer = ScreenObserver()
 
             logger.info(
                 "Screen tools loaded"
@@ -1154,6 +1160,28 @@ class Orchestrator:
         ):
 
             return await self._execute_goal_plan()
+        
+
+        # =====================================================
+        # SCREEN OBSERVATION
+        # =====================================================
+
+        if lowered in (
+            "read screen",
+            "what is on screen",
+            "scan screen",
+        ):
+
+            screen_text = (
+                self._observer.read_screen_text()
+            )
+
+            self._log_action(
+                "screen_observation",
+                "success",
+            )
+
+            return screen_text[:4000]
 
         if not text:
             return ""
