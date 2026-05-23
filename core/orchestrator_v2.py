@@ -22,6 +22,7 @@ CHANGES (drop-in upgrade — no other files need touching):
 """
 
 from __future__ import annotations
+import asyncio
 import time
 import asyncio
 import json
@@ -1152,16 +1153,31 @@ class Orchestrator:
                 "Plan completed"
             )
 
-            return "Plan completed"
+            return self._goal_state["last_result"]
 
         step = plan[step_index]
+        self._goal_state["status"] = "running"
+
+        self._goal_state["status"] = "running"
 
         action = step.get("action")
+        print(
+            f"[agent] step "
+            f"{step_index + 1}/{len(plan)} "
+            f"-> {action}"
+        )
+
+        print(
+            f"[agent] step "
+            f"{step_index + 1}/{len(plan)} "
+            f"-> {action}"
+        )
 
         print(
             f"[plan] executing step {step_index}:",
             step
         )
+       
 
         try:
 
@@ -1202,7 +1218,22 @@ class Orchestrator:
             self._goal_state["last_result"] = result
 
             self._advance_goal_step()
+            # =============================================
+            # AUTO-CONTINUE PLAN
+            # =============================================
 
+            await asyncio.sleep(2)
+
+            if (
+                self._goal_state["step_index"]
+                < len(self._goal_state["plan"])
+            ):
+
+                return await self._execute_goal_plan()
+
+            self._finish_goal(
+                "Plan completed"
+            )
             return result
 
         except Exception as exc:
